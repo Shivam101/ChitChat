@@ -1,0 +1,65 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <TextView
+        android:id="@+id/register_heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="@string/almost_there"
+        android:textColor="@color/orange_800"
+        android:textSize="60sp" />
+    
+    <EditText
+        android:id="@+id/name_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/register_heading"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/bg_card"
+        android:drawablePadding="6dp"
+        android:drawableStart="@drawable/ic_action_person"
+        android:hint="@string/enter_name"
+        android:padding="10dp"
+        android:inputType="textPersonName"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp" />
+
+    <EditText
+        android:id="@+id/email_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name_field"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/bg_card"
+        android:drawablePadding="6dp"
+        android:drawableStart="@drawable/ic_action_email"
+        android:hint="@string/enter_email"
+        android:inputType="textEmailAddress"
+        android:padding="10dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp" />
+    
+    <Button
+        android:id="@+id/register_final"
+        android:background="@color/orange_800"
+        android:text="@string/finish"
+        android:textColor="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp"/>
+
+</RelativeLayout>

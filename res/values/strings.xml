@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Chit Chat</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="enter_username">Username</string>
+    <string name="enter_password">Password</string>
+    <string name="signin">Sign In</string>
+    <string name="register">Register</string>
+    <string name="notregistered">Not ChitChatting yet ?</string>
+    <string name="title_activity_register">Sign Up</string>
+    <string name="enter_name">Name</string>
+    <string name="enter_email">Email</string>
+    <string name="next">Next</string>
+    <string name="friend_error_2">Could not fetch friend list !</string>
+    <string name="add_friends">Add Friends</string>
+    <string name="almost_there">Almost There</string>
+    <string name="finish">Finish</string>
+    <string name="friend_error">Could not display user list</string>
+    <string name="action_logout">Logout</string>
+    <string name="search_users">Search for users</string>
+    <string name="signup_error_title">Ouch !</string>
+    <string name="empty_values_1">Email and Name fields cannot be left blank</string>
+    <string name="empty_values_2">Username and Password fields cannot be left blank</string>
+    <string name="title_activity_register_activity2">RegisterActivity2</string>
+    <string name="title_activity_chats">ChitChat</string>
+    <string name="empty_state">You haven\'t added any friends !</string>
+    <string name="fragment1">Chats</string>
+    <string name="storage_access_error">Device storage could not be accessed</string>
+    <string name="fragment2">People</string>
+    <string name="send">Send</string>
+    <string name="fragment3">Profile</string>
+    <string name="share_option">Start Chatting</string>
+    <string name="lipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu cursus urna. Ut consectetur ligula non lorem commodo consequat. Curabitur quam nisi, tristique eu luctus eu, fringilla eu tellus. Vivamus a purus nec ligula tincidunt aliquet. Nullam lacinia commodo risus, feugiat elementum est fermentum at. Quisque interdum nulla nibh, nec blandit turpis iaculis vel. Suspendisse quis magna gravida, elementum ligula ut, dictum sem. Duis iaculis lectus sit amet tincidunt interdum. Aliquam volutpat dui non rhoncus hendrerit.
+
+Etiam ornare odio vel enim cursus congue. Cras vitae gravida diam. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque vestibulum lacus sem, eget feugiat quam egestas sit amet. Nam posuere feugiat elit, ac gravida eros tristique vel. Nullam condimentum, metus nec cursus condimentum, arcu diam pulvinar sapien, lobortis rhoncus eros diam id lacus. Phasellus condimentum nisl eget felis scelerisque dapibus.
+
+Morbi mollis pellentesque suscipit. Sed aliquam sollicitudin arcu, pharetra convallis sem imperdiet tempor. Aliquam vitae varius lorem. Maecenas a aliquam neque. Curabitur ultricies egestas odio at hendrerit. Vestibulum fringilla feugiat magna, sit amet volutpat massa fringilla non. Fusce tincidunt ut justo id porta. In tristique porta posuere. Etiam facilisis magna at rutrum hendrerit. Pellentesque non odio quis nisl pretium dictum eu id dolor. Nunc et nunc ac erat viverra interdum sed vel mi.
+
+Duis sed odio quam. Proin nec leo tellus. Aenean pellentesque nisi diam, nec sollicitudin arcu sodales eu. Proin id posuere purus, vitae feugiat purus. Sed ac libero sit amet erat ultrices vehicula non sit amet nisl. Vivamus tempor, mauris a suscipit facilisis, lectus turpis pharetra sem, et adipiscing justo quam eu ipsum. Curabitur ut mauris venenatis, pellentesque lorem at, congue diam. Duis quis consequat metus. Nulla dictum et justo vitae luctus. Integer adipiscing tortor vitae orci venenatis feugiat. Sed pulvinar venenatis dolor fermentum dignissim. Nulla consectetur enim mi, eu venenatis odio vehicula in. Maecenas ultrices non dui vitae ultrices. Sed rhoncus, metus id ultrices eleifend, sapien arcu faucibus leo, a mattis est ipsum id purus.
+
+Sed nisl enim, posuere a est a, consectetur condimentum tortor. Sed eget eros egestas, dapibus tellus vehicula, cursus diam. Sed nibh purus, molestie vel lacus non, vehicula cursus ante. Sed sed tellus turpis. Integer accumsan vitae est ut sodales. Etiam vel risus purus. Praesent mollis malesuada augue non consectetur. Maecenas neque leo, tincidunt a cursus vel, faucibus vitae magna. Pellentesque at turpis nunc. Suspendisse euismod, lacus sed eleifend convallis, tortor velit mollis elit, non luctus purus est et nisl.</string>
+    <string name="title_activity_add_friends">Add Friends</string>
+
+    <string-array name="send_choices">
+        <item>Text</item>
+        <item>Picture</item>
+        <item>Video</item>
+    </string-array>
+
+    <string name="title_activity_recipients">Send To..</string>
+
+</resources>
