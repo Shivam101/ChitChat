@@ -8,5 +8,4 @@ It uses the following 3rd party libraries :
 
 [FloatingActionButton] (https://github.com/FaizMalkani/FloatingActionButton)
 
-
 [ViewPagerIndicator] (https://github.com/JakeWharton/Android-ViewPagerIndicator)
