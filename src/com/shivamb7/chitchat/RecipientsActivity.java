@@ -17,14 +17,18 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseRelation;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 import com.shivamb7.chitchat.R;
 import com.shivamb7.chitchat.workers.Constants;
+import com.shivamb7.chitchat.workers.FileHelper;
 
 public class RecipientsActivity extends Activity {
 
@@ -36,6 +40,7 @@ public class RecipientsActivity extends Activity {
 	ParseRelation<ParseUser> mFriendRelation;
 	MenuItem mSend;
 	Uri mMediaUri;
+	String mFileType;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
@@ -46,6 +51,7 @@ public class RecipientsActivity extends Activity {
 		mEmptyImage = (ImageView)findViewById(R.id.empty_state_image);
 		mRecipientList.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 		mMediaUri = getIntent().getData();
+		mFileType = getIntent().getExtras().getString(Constants.FILE_TYPE);
 		mRecipientList.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -70,7 +76,24 @@ public class RecipientsActivity extends Activity {
 		message.put(Constants.SENDER_NAME, currentUser.getUsername());
 		message.put(Constants.SENDER_ID, currentUser.getObjectId());
 		message.put(Constants.RECIPIENT_IDS,getRecipientIds());
-		return message;
+		message.put(Constants.FILE_TYPE,mFileType);
+		byte[] fileData = FileHelper.getByteArrayFromFile(RecipientsActivity.this, mMediaUri);
+		if(fileData==null)
+		{
+			return null;
+		}
+		else
+		{
+			if(mFileType.equals(Constants.TYPE_PICTURE))
+			{
+				fileData = FileHelper.reduceImageForUpload(fileData);
+			}
+			String fileName = FileHelper.getFileName(RecipientsActivity.this, mMediaUri, mFileType);
+			ParseFile mFile = new ParseFile(fileName, fileData);
+			message.put(Constants.FILE, mFile);
+			return message;
+		}
+		
 	}
 	
 	public ArrayList<String> getRecipientIds()
@@ -99,12 +122,52 @@ public class RecipientsActivity extends Activity {
 		{
 			//do sending here
 			ParseObject message = createMessage();
+			if(message!=null)
+			{
+				send(message);
+				finish(); 
+			}
+			else if(message==null)
+			{
+				AlertDialog.Builder builder = new AlertDialog.Builder(
+						RecipientsActivity.this);
+				builder.setMessage(R.string.message_error);
+				builder.setTitle(R.string.signup_error_title);
+				builder.setPositiveButton(android.R.string.ok, null);
+				AlertDialog dialog = builder.create();
+				dialog.show();
+			}
 		}
 		
 		return super.onOptionsItemSelected(item);
 	}
 
 	
+	private void send(ParseObject message) {
+		// TODO Auto-generated method stub
+		message.saveInBackground(new SaveCallback() {
+			
+			@Override
+			public void done(ParseException e) {
+				// TODO Auto-generated method stub
+				if(e==null)
+				{
+					Toast.makeText(RecipientsActivity.this, R.string.message_sent_success, Toast.LENGTH_SHORT).show();
+				}
+				else
+				{
+					AlertDialog.Builder builder = new AlertDialog.Builder(
+							RecipientsActivity.this);
+					builder.setMessage(R.string.message_error);
+					builder.setTitle(R.string.signup_error_title);
+					builder.setPositiveButton(android.R.string.ok, null);
+					AlertDialog dialog = builder.create();
+					dialog.show();
+				}
+			}
+		});
+	}
+
 	@Override
 	public void onResume() {
 		// TODO Auto-generated method stub

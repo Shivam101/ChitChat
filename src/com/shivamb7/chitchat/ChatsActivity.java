@@ -3,6 +3,7 @@ package com.shivamb7.chitchat;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import android.app.ActionBar;
@@ -17,6 +18,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.provider.SyncStateContract.Constants;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -29,11 +31,15 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.parse.FindCallback;
 import com.parse.ParseAnalytics;
+import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.shivamb7.chitchat.R;
 import com.shivamb7.chitchat.adapters.LevelAdapter;
@@ -53,6 +59,7 @@ public class ChatsActivity extends FragmentActivity implements
 	SectionsPagerAdapter mSectionsPagerAdapter;
 	ViewPager mViewPager;
 	Uri mMediaUri;
+	ParseUser currentUser = ParseUser.getCurrentUser();
 	DialogInterface.OnClickListener mDialogListener = new DialogInterface.OnClickListener() {
 
 		@Override
@@ -219,6 +226,7 @@ public class ChatsActivity extends FragmentActivity implements
 		}
 	}
 	
+		
 	
 	
 	@Override
@@ -234,6 +242,16 @@ public class ChatsActivity extends FragmentActivity implements
 
 			Intent sendIntent = new Intent(ChatsActivity.this,RecipientsActivity.class);
 			sendIntent.setData(mMediaUri);
+			String type = new String();
+			if(requestCode == PICTURE_INTENT_CODE)
+			{
+				type = com.shivamb7.chitchat.workers.Constants.TYPE_PICTURE;
+			}
+			else if(requestCode == VIDEO_INTENT_CODE)
+			{
+				type = com.shivamb7.chitchat.workers.Constants.TYPE_VIDEO;
+			}
+			sendIntent.putExtra(com.shivamb7.chitchat.workers.Constants.FILE_TYPE, type);
 			startActivity(sendIntent);
 		}
 		else if(resultCode != RESULT_CANCELED)

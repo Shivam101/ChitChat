@@ -19,12 +19,14 @@
     <string name="friend_error">Could not display user list</string>
     <string name="action_logout">Logout</string>
     <string name="search_users">Search for users</string>
+    <string name="message_error">Message could not be created and sent !</string>
     <string name="signup_error_title">Ouch !</string>
     <string name="empty_values_1">Email and Name fields cannot be left blank</string>
     <string name="empty_values_2">Username and Password fields cannot be left blank</string>
     <string name="title_activity_register_activity2">RegisterActivity2</string>
     <string name="title_activity_chats">ChitChat</string>
-    <string name="empty_state">You haven\'t added any friends !</string>
+    <string name="empty_state_friends">You haven\'t added any friends !</string>
+    <string name="empty_state_chats">No Chits Here !</string>
     <string name="fragment1">Chats</string>
     <string name="storage_access_error">Device storage could not be accessed</string>
     <string name="fragment2">People</string>
@@ -49,5 +51,7 @@ Sed nisl enim, posuere a est a, consectetur condimentum tortor. Sed eget eros eg
     </string-array>
 
     <string name="title_activity_recipients">Send To..</string>
+    <string name="message_sent_success">Message sent successfully !</string>
+    <string name="title_activity_image_message">ImageMessageActivity</string>
 
 </resources>

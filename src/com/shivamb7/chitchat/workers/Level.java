@@ -1,5 +1,7 @@
 package com.shivamb7.chitchat.workers;
 
+import com.shivamb7.chitchat.R;
+
 public class Level {
 	
     public String title;

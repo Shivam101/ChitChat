@@ -24,7 +24,7 @@
         android:layout_marginTop="10dp"
         android:textColor="@android:color/tertiary_text_light"
         android:layout_centerHorizontal="true"
-        android:text="@string/empty_state"
+        android:text="@string/empty_state_friends"
         android:textSize="25sp" />
     
 

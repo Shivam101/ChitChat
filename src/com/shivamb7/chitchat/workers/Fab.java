@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
+import com.shivamb7.chitchat.R;
 
 public class Fab extends View 
 {

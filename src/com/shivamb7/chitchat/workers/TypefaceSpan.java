@@ -7,6 +7,7 @@ import android.support.v4.util.LruCache;
 import android.text.Spannable;
 import android.text.TextPaint;
 import android.text.style.MetricAffectingSpan;
+import com.shivamb7.chitchat.R;
 
 public class TypefaceSpan extends MetricAffectingSpan {
       /** An <code>LruCache</code> for previously loaded typefaces. */

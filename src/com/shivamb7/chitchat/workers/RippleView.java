@@ -28,6 +28,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.FrameLayout;
+import com.shivamb7.chitchat.R;
 
 /**
  * Attach to any view to add ripple touch effect on top of.

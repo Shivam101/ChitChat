@@ -1,6 +1,7 @@
 package com.shivamb7.chitchat.workers;
 
 import com.parse.Parse;
+import com.shivamb7.chitchat.R;
 import android.app.Application;
 
 public class ChitChatApplication extends Application {
