@@ -20,6 +20,8 @@
     <color name="darker_gray">#aaa</color>
     <color name="orange_800">#ef6c00</color> <!-- Use with white text -->
     <color name="orange_900">#e65100</color> <!-- Use with white text -->
+    <color name="orange_050">#fff3e0</color> <!-- Use with black text -->
+    <color name="orange_100">#ffe0b2</color> <!-- Use with black text -->
 
     <drawable name="screen_background_dark_transparent">#80000000</drawable>
 

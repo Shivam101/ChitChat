@@ -3,6 +3,7 @@ package com.shivamb7.chitchat.adapters;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.shivamb7.chitchat.ChatsActivity;
 import com.shivamb7.chitchat.R;
 import com.shivamb7.chitchat.workers.Constants;
 
@@ -52,6 +53,10 @@ public class ChatsAdapter extends ArrayAdapter<ParseObject> {
 		else if(message.getString(Constants.FILE_TYPE).equals(Constants.TYPE_VIDEO))
 		{
 			holder.iconImage.setImageResource(R.drawable.ic_action_video_orange);
+		}
+		else
+		{
+			holder.iconImage.setImageResource(R.drawable.ic_action_chat_orange);
 		}
 		holder.nameLabel.setText(message.getString(Constants.SENDER_NAME));
 		return convertView;

@@ -1,5 +1,6 @@
 package com.shivamb7.chitchat.fragments;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Intent;
@@ -74,11 +75,22 @@ public class ChatsFragment extends Fragment {
 		// TODO Auto-generated method stub
 		super.onResume();
 		getActivity().setProgressBarIndeterminateVisibility(true);
-		ParseQuery<ParseObject> messageQuery = new ParseQuery("Messages");
+		//List<ParseQuery<ParseObject>> queries = new ArrayList<ParseQuery<ParseObject>>();
+		ParseQuery<ParseObject> messageQuery = new ParseQuery<ParseObject>("Messages");
 		messageQuery.whereEqualTo(
 				com.shivamb7.chitchat.workers.Constants.RECIPIENT_IDS,
 				currentUser.getObjectId());
 		messageQuery.addAscendingOrder("createdAt");
+		/*ParseQuery<ParseObject> messageQuery2 = new ParseQuery<ParseObject>("TextMessages");
+		messageQuery2.whereEqualTo(
+				com.shivamb7.chitchat.workers.Constants.RECIPIENT_IDS,
+				currentUser.getObjectId());
+		messageQuery2.addAscendingOrder("createdAt");
+		queries.add(messageQuery);
+		queries.add(messageQuery2);
+		ParseQuery<ParseObject> superQuery = new ParseQuery();
+		ParseQuery.or(queries);
+		*/
 		messageQuery.findInBackground(new FindCallback<ParseObject>() {
 
 			@Override

@@ -60,6 +60,85 @@ containing a value of this type.
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
         public static final int circularImageViewStyle=0x7f010027;
+        /**  Specifies whether or not to draw a circular border around the image. 
+         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int civ_border=0x7f010028;
+        /**  Specifies the color of the border draw around the image. (if enabled) 
+         <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int civ_border_color=0x7f010029;
+        /**  Makes the border this pixels wide. (if enabled) 
+         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int civ_border_width=0x7f01002a;
+        /**  Specifies whether or not to draw a selector on this view upon touch events. 
+         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int civ_selector=0x7f01002b;
+        /**  Specifies the color of the selector draw on top of the image upon touch events. (if enabled) 
+         <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int civ_selector_color=0x7f01002c;
+        /**  Specifies the color of the selector stroke drawn around the image upon touch events. Be sure to provide some opacity. (if enabled) 
+         <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int civ_selector_stroke_color=0x7f01002d;
+        /**  Makes the selector stroke drawn around the image upon touch events this pixels wide. (if enabled) 
+         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int civ_selector_stroke_width=0x7f01002e;
+        /**  Specifies whether or not to draw a shadow around your circular image. 
+         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int civ_shadow=0x7f01002f;
         /**  Screen edge padding. 
          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
@@ -401,15 +480,15 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int LawnGreen=0x7f060016;
         public static final int LightGreen=0x7f060015;
         public static final int LightSteelBlue=0x7f06001a;
-        public static final int actioncolor=0x7f06002b;
+        public static final int actioncolor=0x7f06002d;
         public static final int aqua=0x7f060011;
         public static final int background_holo_light=0x7f060020;
-        public static final int biocolor=0x7f060027;
+        public static final int biocolor=0x7f060029;
         public static final int black=0x7f060012;
-        public static final int brandcolor=0x7f06002a;
+        public static final int brandcolor=0x7f06002c;
         public static final int bw=0x7f06001c;
-        public static final int centurycolor=0x7f060029;
-        public static final int chelseablue=0x7f06002c;
+        public static final int centurycolor=0x7f06002b;
+        public static final int chelseablue=0x7f06002e;
         public static final int darker_gray=0x7f060021;
         public static final int default_circle_indicator_fill_color=0x7f060008;
         public static final int default_circle_indicator_page_color=0x7f060009;
@@ -420,28 +499,34 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int default_title_indicator_selected_color=0x7f06000e;
         public static final int default_title_indicator_text_color=0x7f06000f;
         public static final int default_underline_indicator_selected_color=0x7f060010;
-        public static final int factscolor=0x7f060026;
-        public static final int gallerycolor=0x7f060025;
+        public static final int factscolor=0x7f060028;
+        public static final int gallerycolor=0x7f060027;
         public static final int green=0x7f060014;
         public static final int holo_blue_dark=0x7f06001f;
         public static final int navy=0x7f06001b;
-        public static final int orange=0x7f06002d;
-        public static final int orange2=0x7f06002e;
+        public static final int orange=0x7f06002f;
+        public static final int orange2=0x7f060030;
+        /**  Use with white text 
+         */
+        public static final int orange_050=0x7f060024;
+        /**  Use with black text 
+         */
+        public static final int orange_100=0x7f060025;
         public static final int orange_800=0x7f060022;
         /**  Use with white text 
          */
         public static final int orange_900=0x7f060023;
-        public static final int pallet=0x7f060037;
-        public static final int palletblue=0x7f06002f;
-        public static final int palletblue2=0x7f060034;
-        public static final int palletgolden=0x7f060032;
-        public static final int palletgolden2=0x7f060036;
-        public static final int palletlightgreen=0x7f060031;
-        public static final int palletpurple=0x7f060030;
-        public static final int palletpurple2=0x7f060035;
-        public static final int palletred=0x7f060033;
-        public static final int quizcolor=0x7f060024;
-        public static final int quotescolor=0x7f060028;
+        public static final int pallet=0x7f060039;
+        public static final int palletblue=0x7f060031;
+        public static final int palletblue2=0x7f060036;
+        public static final int palletgolden=0x7f060034;
+        public static final int palletgolden2=0x7f060038;
+        public static final int palletlightgreen=0x7f060033;
+        public static final int palletpurple=0x7f060032;
+        public static final int palletpurple2=0x7f060037;
+        public static final int palletred=0x7f060035;
+        public static final int quizcolor=0x7f060026;
+        public static final int quotescolor=0x7f06002a;
         public static final int red=0x7f060018;
         public static final int royalblue=0x7f060019;
         public static final int screen_background_dark=0x7f06001e;
@@ -453,8 +538,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int vpi__bright_foreground_holo_light=0x7f060003;
         public static final int vpi__bright_foreground_inverse_holo_dark=0x7f060006;
         public static final int vpi__bright_foreground_inverse_holo_light=0x7f060007;
-        public static final int vpi__dark_theme=0x7f060038;
-        public static final int vpi__light_theme=0x7f060039;
+        public static final int vpi__dark_theme=0x7f06003a;
+        public static final int vpi__light_theme=0x7f06003b;
         public static final int white=0x7f060013;
     }
     public static final class dimen {
@@ -497,81 +582,85 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int ic_action_group=0x7f020015;
         public static final int ic_action_overflow_round=0x7f020016;
         public static final int ic_action_person=0x7f020017;
-        public static final int ic_action_picture_orange=0x7f020018;
-        public static final int ic_action_search=0x7f020019;
-        public static final int ic_action_secure=0x7f02001a;
-        public static final int ic_action_send_now=0x7f02001b;
-        public static final int ic_action_send_now_orange=0x7f02001c;
-        public static final int ic_action_video_orange=0x7f02001d;
-        public static final int ic_launcher=0x7f02001e;
-        public static final int list_focused_chitchat=0x7f02001f;
-        public static final int list_pressed_chitchat=0x7f020020;
-        public static final int menu_dropdown_panel_chitchat=0x7f020021;
-        public static final int progress_bg_chitchat=0x7f020022;
-        public static final int progress_horizontal_chitchat=0x7f020023;
-        public static final int progress_primary_chitchat=0x7f020024;
-        public static final int progress_secondary_chitchat=0x7f020025;
-        /**  Use with white text 
+        public static final int ic_action_person_orange=0x7f020018;
+        public static final int ic_action_picture_orange=0x7f020019;
+        public static final int ic_action_search=0x7f02001a;
+        public static final int ic_action_secure=0x7f02001b;
+        public static final int ic_action_send_now=0x7f02001c;
+        public static final int ic_action_send_now_orange=0x7f02001d;
+        public static final int ic_action_video_orange=0x7f02001e;
+        public static final int ic_launcher=0x7f02001f;
+        public static final int list_focused_chitchat=0x7f020020;
+        public static final int list_pressed_chitchat=0x7f020021;
+        public static final int menu_dropdown_panel_chitchat=0x7f020022;
+        public static final int progress_bg_chitchat=0x7f020023;
+        public static final int progress_horizontal_chitchat=0x7f020024;
+        public static final int progress_primary_chitchat=0x7f020025;
+        public static final int progress_secondary_chitchat=0x7f020026;
+        /**  Use with black text 
          */
-        public static final int screen_background_dark_transparent=0x7f02003a;
-        public static final int selectable_background_chitchat=0x7f020026;
-        public static final int spinner_ab_default_chitchat=0x7f020027;
-        public static final int spinner_ab_disabled_chitchat=0x7f020028;
-        public static final int spinner_ab_focused_chitchat=0x7f020029;
-        public static final int spinner_ab_pressed_chitchat=0x7f02002a;
-        public static final int spinner_background_ab_chitchat=0x7f02002b;
-        public static final int tab_indicator_ab_chitchat=0x7f02002c;
-        public static final int tab_selected_chitchat=0x7f02002d;
-        public static final int tab_selected_focused_chitchat=0x7f02002e;
-        public static final int tab_selected_pressed_chitchat=0x7f02002f;
-        public static final int tab_unselected_chitchat=0x7f020030;
-        public static final int tab_unselected_focused_chitchat=0x7f020031;
-        public static final int tab_unselected_pressed_chitchat=0x7f020032;
-        public static final int vpi__tab_indicator=0x7f020033;
-        public static final int vpi__tab_selected_focused_holo=0x7f020034;
-        public static final int vpi__tab_selected_holo=0x7f020035;
-        public static final int vpi__tab_selected_pressed_holo=0x7f020036;
-        public static final int vpi__tab_unselected_focused_holo=0x7f020037;
-        public static final int vpi__tab_unselected_holo=0x7f020038;
-        public static final int vpi__tab_unselected_pressed_holo=0x7f020039;
+        public static final int screen_background_dark_transparent=0x7f02003b;
+        public static final int selectable_background_chitchat=0x7f020027;
+        public static final int spinner_ab_default_chitchat=0x7f020028;
+        public static final int spinner_ab_disabled_chitchat=0x7f020029;
+        public static final int spinner_ab_focused_chitchat=0x7f02002a;
+        public static final int spinner_ab_pressed_chitchat=0x7f02002b;
+        public static final int spinner_background_ab_chitchat=0x7f02002c;
+        public static final int tab_indicator_ab_chitchat=0x7f02002d;
+        public static final int tab_selected_chitchat=0x7f02002e;
+        public static final int tab_selected_focused_chitchat=0x7f02002f;
+        public static final int tab_selected_pressed_chitchat=0x7f020030;
+        public static final int tab_unselected_chitchat=0x7f020031;
+        public static final int tab_unselected_focused_chitchat=0x7f020032;
+        public static final int tab_unselected_pressed_chitchat=0x7f020033;
+        public static final int vpi__tab_indicator=0x7f020034;
+        public static final int vpi__tab_selected_focused_holo=0x7f020035;
+        public static final int vpi__tab_selected_holo=0x7f020036;
+        public static final int vpi__tab_selected_pressed_holo=0x7f020037;
+        public static final int vpi__tab_unselected_focused_holo=0x7f020038;
+        public static final int vpi__tab_unselected_holo=0x7f020039;
+        public static final int vpi__tab_unselected_pressed_holo=0x7f02003a;
     }
     public static final class id {
-        public static final int action_add_friends=0x7f050022;
-        public static final int action_logout=0x7f050021;
-        public static final int action_send=0x7f050023;
+        public static final int action_add_friends=0x7f050025;
+        public static final int action_logout=0x7f050024;
+        public static final int action_send=0x7f050026;
         public static final int add_friends_list=0x7f050006;
-        public static final int app_name_heading=0x7f05000a;
+        public static final int app_name_heading=0x7f05000c;
         public static final int bottom=0x7f050003;
-        public static final int customtitlebar=0x7f05001b;
-        public static final int divider=0x7f05000e;
-        public static final int email_field=0x7f050017;
-        public static final int empty_state_image=0x7f050012;
-        public static final int empty_state_text=0x7f050013;
+        public static final int button1=0x7f050009;
+        public static final int customtitlebar=0x7f05001d;
+        public static final int divider=0x7f050010;
+        public static final int editText1=0x7f05000a;
+        public static final int email_field=0x7f050019;
+        public static final int empty_state_image=0x7f050014;
+        public static final int empty_state_text=0x7f050015;
         public static final int etsearch=0x7f050005;
         public static final int fabbutton=0x7f050008;
-        public static final int footer_text=0x7f05000f;
-        public static final int friends_list=0x7f05001e;
-        public static final int image=0x7f050009;
-        public static final int imgIcon=0x7f05001a;
-        public static final int message_type_icon=0x7f050020;
-        public static final int messages_list=0x7f05001d;
+        public static final int footer_text=0x7f050011;
+        public static final int friends_list=0x7f050020;
+        public static final int image=0x7f05000b;
+        public static final int imgIcon=0x7f05001c;
+        public static final int message_type_icon=0x7f050022;
+        public static final int messages_list=0x7f05001f;
         public static final int mpager=0x7f050007;
-        public static final int name_field=0x7f050016;
+        public static final int name_field=0x7f050018;
         public static final int none=0x7f050000;
-        public static final int password_field=0x7f05000c;
-        public static final int recipient_list=0x7f050011;
-        public static final int register_button=0x7f050010;
-        public static final int register_final=0x7f050018;
-        public static final int register_heading=0x7f050014;
-        public static final int register_next=0x7f050015;
-        public static final int sender_name=0x7f05001f;
-        public static final int signin_button=0x7f05000d;
-        public static final int text1=0x7f050019;
-        public static final int textView1=0x7f05001c;
+        public static final int password_field=0x7f05000e;
+        public static final int profile_picture=0x7f050023;
+        public static final int recipient_list=0x7f050013;
+        public static final int register_button=0x7f050012;
+        public static final int register_final=0x7f05001a;
+        public static final int register_heading=0x7f050016;
+        public static final int register_next=0x7f050017;
+        public static final int sender_name=0x7f050021;
+        public static final int signin_button=0x7f05000f;
+        public static final int text1=0x7f05001b;
+        public static final int textView1=0x7f05001e;
         public static final int top=0x7f050004;
         public static final int triangle=0x7f050001;
         public static final int underline=0x7f050002;
-        public static final int username_field=0x7f05000b;
+        public static final int username_field=0x7f05000d;
     }
     public static final class integer {
         public static final int default_circle_indicator_orientation=0x7f080000;
@@ -583,18 +672,20 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     public static final class layout {
         public static final int activity_add_friends=0x7f030000;
         public static final int activity_chats=0x7f030001;
-        public static final int activity_image_message=0x7f030002;
-        public static final int activity_main=0x7f030003;
-        public static final int activity_recipients=0x7f030004;
-        public static final int activity_register=0x7f030005;
-        public static final int activity_register_activity2=0x7f030006;
-        public static final int dialog_list_item=0x7f030007;
-        public static final int dialog_title=0x7f030008;
-        public static final int dummy=0x7f030009;
-        public static final int fragment_chats=0x7f03000a;
-        public static final int fragment_friends=0x7f03000b;
-        public static final int message_list_item=0x7f03000c;
-        public static final int under_construction=0x7f03000d;
+        public static final int activity_compose_text=0x7f030002;
+        public static final int activity_image_message=0x7f030003;
+        public static final int activity_main=0x7f030004;
+        public static final int activity_recipients=0x7f030005;
+        public static final int activity_register=0x7f030006;
+        public static final int activity_register_activity2=0x7f030007;
+        public static final int dialog_list_item=0x7f030008;
+        public static final int dialog_title=0x7f030009;
+        public static final int dummy=0x7f03000a;
+        public static final int fragment_chats=0x7f03000b;
+        public static final int fragment_friends=0x7f03000c;
+        public static final int message_list_item=0x7f03000d;
+        public static final int profile_view=0x7f03000e;
+        public static final int under_construction=0x7f03000f;
     }
     public static final class menu {
         public static final int main_menu=0x7f0d0000;
@@ -607,11 +698,13 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int app_name=0x7f0b0000;
         public static final int empty_state_chats=0x7f0b0019;
         public static final int empty_state_friends=0x7f0b0018;
+        public static final int empty_text_message=0x7f0b0027;
         public static final int empty_values_1=0x7f0b0014;
         public static final int empty_values_2=0x7f0b0015;
         public static final int enter_email=0x7f0b0009;
         public static final int enter_name=0x7f0b0008;
         public static final int enter_password=0x7f0b0003;
+        public static final int enter_text_message=0x7f0b0026;
         public static final int enter_username=0x7f0b0002;
         public static final int finish=0x7f0b000e;
         public static final int fragment1=0x7f0b001a;
@@ -621,6 +714,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int friend_error_2=0x7f0b000b;
         public static final int hello_world=0x7f0b0001;
         public static final int lipsum=0x7f0b0020;
+        public static final int long_text_error=0x7f0b0028;
         public static final int message_error=0x7f0b0012;
         public static final int message_sent_success=0x7f0b0023;
         public static final int next=0x7f0b000a;
@@ -634,6 +728,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int storage_access_error=0x7f0b001b;
         public static final int title_activity_add_friends=0x7f0b0021;
         public static final int title_activity_chats=0x7f0b0017;
+        public static final int title_activity_compose_text=0x7f0b0025;
         public static final int title_activity_image_message=0x7f0b0024;
         public static final int title_activity_recipients=0x7f0b0022;
         public static final int title_activity_register=0x7f0b0007;
@@ -850,6 +945,7 @@ containing a value of this type.
         */
         public static final int CirclePageIndicator_strokeWidth = 3;
         /**  CircularImageView for custom shape 
+ CircularImageView for custom shape 
            <p>Includes the following attributes:</p>
            <table>
            <colgroup align="left" />
@@ -858,6 +954,14 @@ containing a value of this type.
            <tr><td><code>{@link #CircularImageView_border com.shivamb7.chitchat:border}</code></td><td> Specifies whether or not to draw a circular border around the image.</td></tr>
            <tr><td><code>{@link #CircularImageView_border_color com.shivamb7.chitchat:border_color}</code></td><td> Specifies the color of the border draw around the image.</td></tr>
            <tr><td><code>{@link #CircularImageView_border_width com.shivamb7.chitchat:border_width}</code></td><td> Makes the border this pixels wide.</td></tr>
+           <tr><td><code>{@link #CircularImageView_civ_border com.shivamb7.chitchat:civ_border}</code></td><td> Specifies whether or not to draw a circular border around the image.</td></tr>
+           <tr><td><code>{@link #CircularImageView_civ_border_color com.shivamb7.chitchat:civ_border_color}</code></td><td> Specifies the color of the border draw around the image.</td></tr>
+           <tr><td><code>{@link #CircularImageView_civ_border_width com.shivamb7.chitchat:civ_border_width}</code></td><td> Makes the border this pixels wide.</td></tr>
+           <tr><td><code>{@link #CircularImageView_civ_selector com.shivamb7.chitchat:civ_selector}</code></td><td> Specifies whether or not to draw a selector on this view upon touch events.</td></tr>
+           <tr><td><code>{@link #CircularImageView_civ_selector_color com.shivamb7.chitchat:civ_selector_color}</code></td><td> Specifies the color of the selector draw on top of the image upon touch events.</td></tr>
+           <tr><td><code>{@link #CircularImageView_civ_selector_stroke_color com.shivamb7.chitchat:civ_selector_stroke_color}</code></td><td> Specifies the color of the selector stroke drawn around the image upon touch events.</td></tr>
+           <tr><td><code>{@link #CircularImageView_civ_selector_stroke_width com.shivamb7.chitchat:civ_selector_stroke_width}</code></td><td> Makes the selector stroke drawn around the image upon touch events this pixels wide.</td></tr>
+           <tr><td><code>{@link #CircularImageView_civ_shadow com.shivamb7.chitchat:civ_shadow}</code></td><td> Specifies whether or not to draw a shadow around your circular image.</td></tr>
            <tr><td><code>{@link #CircularImageView_selector com.shivamb7.chitchat:selector}</code></td><td> Specifies whether or not to draw a selector on this view upon touch events.</td></tr>
            <tr><td><code>{@link #CircularImageView_selector_color com.shivamb7.chitchat:selector_color}</code></td><td> Specifies the color of the selector draw on top of the image upon touch events.</td></tr>
            <tr><td><code>{@link #CircularImageView_selector_stroke_color com.shivamb7.chitchat:selector_stroke_color}</code></td><td> Specifies the color of the selector stroke drawn around the image upon touch events.</td></tr>
@@ -867,6 +971,14 @@ containing a value of this type.
            @see #CircularImageView_border
            @see #CircularImageView_border_color
            @see #CircularImageView_border_width
+           @see #CircularImageView_civ_border
+           @see #CircularImageView_civ_border_color
+           @see #CircularImageView_civ_border_width
+           @see #CircularImageView_civ_selector
+           @see #CircularImageView_civ_selector_color
+           @see #CircularImageView_civ_selector_stroke_color
+           @see #CircularImageView_civ_selector_stroke_width
+           @see #CircularImageView_civ_shadow
            @see #CircularImageView_selector
            @see #CircularImageView_selector_color
            @see #CircularImageView_selector_stroke_color
@@ -875,7 +987,9 @@ containing a value of this type.
          */
         public static final int[] CircularImageView = {
             0x7f01001f, 0x7f010020, 0x7f010021, 0x7f010022,
-            0x7f010023, 0x7f010024, 0x7f010025, 0x7f010026
+            0x7f010023, 0x7f010024, 0x7f010025, 0x7f010026,
+            0x7f010028, 0x7f010029, 0x7f01002a, 0x7f01002b,
+            0x7f01002c, 0x7f01002d, 0x7f01002e, 0x7f01002f
         };
         /**
           <p>
@@ -928,6 +1042,141 @@ containing a value of this type.
           @attr name com.shivamb7.chitchat:border_width
         */
         public static final int CircularImageView_border_width = 2;
+        /**
+          <p>
+          @attr description
+           Specifies whether or not to draw a circular border around the image. 
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name com.shivamb7.chitchat:civ_border
+        */
+        public static final int CircularImageView_civ_border = 8;
+        /**
+          <p>
+          @attr description
+           Specifies the color of the border draw around the image. (if enabled) 
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name com.shivamb7.chitchat:civ_border_color
+        */
+        public static final int CircularImageView_civ_border_color = 9;
+        /**
+          <p>
+          @attr description
+           Makes the border this pixels wide. (if enabled) 
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name com.shivamb7.chitchat:civ_border_width
+        */
+        public static final int CircularImageView_civ_border_width = 10;
+        /**
+          <p>
+          @attr description
+           Specifies whether or not to draw a selector on this view upon touch events. 
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name com.shivamb7.chitchat:civ_selector
+        */
+        public static final int CircularImageView_civ_selector = 11;
+        /**
+          <p>
+          @attr description
+           Specifies the color of the selector draw on top of the image upon touch events. (if enabled) 
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name com.shivamb7.chitchat:civ_selector_color
+        */
+        public static final int CircularImageView_civ_selector_color = 12;
+        /**
+          <p>
+          @attr description
+           Specifies the color of the selector stroke drawn around the image upon touch events. Be sure to provide some opacity. (if enabled) 
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name com.shivamb7.chitchat:civ_selector_stroke_color
+        */
+        public static final int CircularImageView_civ_selector_stroke_color = 13;
+        /**
+          <p>
+          @attr description
+           Makes the selector stroke drawn around the image upon touch events this pixels wide. (if enabled) 
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name com.shivamb7.chitchat:civ_selector_stroke_width
+        */
+        public static final int CircularImageView_civ_selector_stroke_width = 14;
+        /**
+          <p>
+          @attr description
+           Specifies whether or not to draw a shadow around your circular image. 
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name com.shivamb7.chitchat:civ_shadow
+        */
+        public static final int CircularImageView_civ_shadow = 15;
         /**
           <p>
           @attr description

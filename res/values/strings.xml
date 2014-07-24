@@ -53,5 +53,9 @@ Sed nisl enim, posuere a est a, consectetur condimentum tortor. Sed eget eros eg
     <string name="title_activity_recipients">Send To..</string>
     <string name="message_sent_success">Message sent successfully !</string>
     <string name="title_activity_image_message">ImageMessageActivity</string>
+    <string name="title_activity_compose_text">Compose Text Message</string>
+    <string name="enter_text_message">Enter Text Message</string>
+    <string name="empty_text_message">Text cannot be empty</string>
+    <string name="long_text_error">Text cannot be longer than 140 characters !</string>
 
 </resources>

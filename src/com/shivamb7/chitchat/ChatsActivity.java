@@ -56,6 +56,9 @@ public class ChatsActivity extends FragmentActivity implements
 	int VIDEO_INTENT_CODE = 2;
 	int MEDIA_TYPE_IMAGE = 3;
 	int MEDIA_TYPE_VIDEO = 4;
+	int TEXT_INTENT_CODE = 5;
+	int MEDIA_TYPE_TEXT = 6;
+	static int flag = 0;
 	SectionsPagerAdapter mSectionsPagerAdapter;
 	ViewPager mViewPager;
 	Uri mMediaUri;
@@ -65,10 +68,14 @@ public class ChatsActivity extends FragmentActivity implements
 		@Override
 		public void onClick(DialogInterface dialog, int which) {
 
-			if (which == 0) {
-				// do text stuff here
-			} else if (which == 1) {
+			//if (which == 0) {
+				//flag = 1;
+				//Intent textIntent = new Intent(ChatsActivity.this,ComposeTextActivity.class);
+				//startActivity(textIntent);
+				
+			 if (which == 0) {
 				// do picture stuff here
+				flag = 0;
 				Intent pictureIntent = new Intent(
 						MediaStore.ACTION_IMAGE_CAPTURE);
 				mMediaUri = getOutputUri(MEDIA_TYPE_IMAGE);
@@ -80,8 +87,9 @@ public class ChatsActivity extends FragmentActivity implements
 					pictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, mMediaUri);
 					startActivityForResult(pictureIntent, PICTURE_INTENT_CODE);
 				}
-			} else if (which == 2) {
+			} else if (which == 1) {
 				// do video stuff here
+				flag = 0;
 				Intent videoIntent = new Intent(
 						MediaStore.ACTION_VIDEO_CAPTURE);
 				mMediaUri = getOutputUri(MEDIA_TYPE_VIDEO);
@@ -171,7 +179,7 @@ public class ChatsActivity extends FragmentActivity implements
 				R.drawable.ic_action_send_now));
 		fab.showFab();
 		final Level data[] = new Level[] {
-				new Level("Text", R.drawable.ic_action_chat_orange),
+				//new Level("Text", R.drawable.ic_action_chat_orange),
 				new Level("Picture", R.drawable.ic_action_picture_orange),
 				new Level("Video", R.drawable.ic_action_video_orange), };
 		fab.setOnClickListener(new OnClickListener() {
@@ -251,6 +259,7 @@ public class ChatsActivity extends FragmentActivity implements
 			{
 				type = com.shivamb7.chitchat.workers.Constants.TYPE_VIDEO;
 			}
+			
 			sendIntent.putExtra(com.shivamb7.chitchat.workers.Constants.FILE_TYPE, type);
 			startActivity(sendIntent);
 		}
