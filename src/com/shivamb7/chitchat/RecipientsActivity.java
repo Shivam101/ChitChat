@@ -74,11 +74,11 @@ public class RecipientsActivity extends Activity {
 	public ParseObject createMessage()
 	{
 		ParseObject message = new ParseObject(Constants.CLASS_MESSAGES);
-		message.put(Constants.SENDER_NAME, currentUser.getUsername());
+		message.put(Constants.SENDER_NAME, currentUser.getString("Name"));
 		message.put(Constants.SENDER_ID, currentUser.getObjectId());
 		message.put(Constants.RECIPIENT_IDS,getRecipientIds());
 		message.put(Constants.FILE_TYPE,mFileType);
-		message.put(Constants.TEXT_CONTENTS, ComposeTextActivity.msg);
+		//message.put(Constants.TEXT_CONTENTS, ComposeTextActivity.msg);
 		//message.put(Constants.TEXT_CONTENTS, ComposeTextActivity.msg);
 		//if(ChatsActivity.flag==0)
 		//{

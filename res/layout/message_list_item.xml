@@ -9,26 +9,25 @@
         android:orientation="horizontal"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:paddingTop="10dp"
-        android:background="@drawable/bg_card"
-         >
+        android:paddingTop="10dp" >
 
         <TextView
             android:id="@+id/sender_name"
             android:layout_width="match_parent"
             android:layout_height="65dp"
-            android:layout_marginLeft="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="15dp"
             android:gravity="center_vertical"
             android:minHeight="?android:attr/listPreferredItemHeightSmall"
             android:paddingLeft="16dp"
-            android:textSize="22sp"
-            android:paddingRight="16dp" />
+            android:paddingRight="16dp"
+            android:textSize="18sp" />
 
         <ImageView
             android:id="@+id/message_type_icon"
             android:layout_width="96px"
             android:layout_height="96px"
-            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:gravity="center_vertical"
             android:padding="2dip" />

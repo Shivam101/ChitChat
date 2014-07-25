@@ -29,6 +29,7 @@ public class ContactsFragment extends Fragment {
 	ListView mFriendList;
 	TextView mEmptyText;
 	ImageView mEmptyImage;
+	static int numberofFriends;
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -61,12 +62,14 @@ public class ContactsFragment extends Fragment {
 							for (ParseUser user : pfriends) {
 								usernames[i] = user.getUsername();
 								i++;
+								numberofFriends++;
 							}
 							if (usernames.length == 0) {
 								mEmptyImage.setVisibility(View.VISIBLE);
 								mEmptyText.setVisibility(View.VISIBLE);
 								mFriendList.setVisibility(View.GONE);
 							} else {
+								//numberofFriends = usernames.length;
 								mEmptyImage.setVisibility(View.GONE);
 								mEmptyText.setVisibility(View.GONE);
 								mFriendList.setVisibility(View.VISIBLE);
