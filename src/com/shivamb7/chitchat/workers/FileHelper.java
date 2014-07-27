@@ -68,7 +68,7 @@ public class FileHelper {
 		Bitmap bitmap = ImageResizer.resizeImageMaintainAspectRatio(imageData, SHORT_SIDE_TARGET);
 		
 		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-		bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
+		bitmap.compress(Bitmap.CompressFormat.JPEG, 50, outputStream);
 		byte[] reducedData = outputStream.toByteArray();
 		try {
 			outputStream.close();

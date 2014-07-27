@@ -45,15 +45,30 @@
         </activity>
         <activity
             android:name=".AddFriendsActivity"
-            android:label="@string/title_activity_add_friends" >
+            android:label="@string/title_activity_add_friends"
+            android:parentActivityName="com.shivamb7.chitchat.ChatsActivity"
+             >
+            <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.shivamb7.chitchat.ChatsActivity" />
         </activity>
         <activity
             android:name=".RecipientsActivity"
-            android:label="@string/title_activity_recipients" >
+            android:label="@string/title_activity_recipients"
+            android:parentActivityName="com.shivamb7.chitchat.ChatsActivity"
+             >
+            <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.shivamb7.chitchat.ChatsActivity" />
         </activity>
         <activity
             android:name=".ImageMessageActivity"
-            android:label="@string/title_activity_image_message" >
+            android:label="@string/title_activity_image_message"
+            android:parentActivityName="com.shivamb7.chitchat.ChatsActivity"
+             >
+            <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.shivamb7.chitchat.ChatsActivity" />
         </activity>
         <activity
             android:name=".ComposeTextActivity"

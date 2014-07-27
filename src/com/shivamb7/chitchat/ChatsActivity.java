@@ -244,6 +244,7 @@ public class ChatsActivity extends FragmentActivity implements
 		if(resultCode == RESULT_OK)
 		{
 			//add to gallery
+			if(requestCode==PICTURE_INTENT_CODE||requestCode==VIDEO_INTENT_CODE){
 			Intent galleryAddIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
 			galleryAddIntent.setData(mMediaUri);
 			sendBroadcast(galleryAddIntent);
@@ -260,8 +261,14 @@ public class ChatsActivity extends FragmentActivity implements
 				type = com.shivamb7.chitchat.workers.Constants.TYPE_VIDEO;
 			}
 			
+			
 			sendIntent.putExtra(com.shivamb7.chitchat.workers.Constants.FILE_TYPE, type);
 			startActivity(sendIntent);
+		}
+			else
+			{
+				
+			}
 		}
 		else if(resultCode != RESULT_CANCELED)
 		{

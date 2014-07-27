@@ -5,9 +5,14 @@ import java.util.List;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
+import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
+import android.support.v4.app.NotificationCompat;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -42,14 +47,34 @@ public class RecipientsActivity extends Activity {
 	Uri mMediaUri;
 	String textMessage;
 	String mFileType;
+	int mNotificationId = 001;
+	NotificationManager mNotifyMgr;
+	Uri soundUri;
+	NotificationCompat.Builder mNotifBuilder;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_recipients);
-		mRecipientList = (ListView)findViewById(R.id.recipient_list);
-		mEmptyText = (TextView)findViewById(R.id.empty_state_text);
-		mEmptyImage = (ImageView)findViewById(R.id.empty_state_image);
+		getActionBar().setHomeButtonEnabled(true);
+		Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);;
+		Intent resultIntent = new Intent(this, ChatsActivity.class);
+		PendingIntent resultPendingIntent =
+			    PendingIntent.getActivity(
+			    this,
+			    0,
+			    resultIntent,
+			    PendingIntent.FLAG_UPDATE_CURRENT
+			);
+		mNotifBuilder = new NotificationCompat.Builder(
+				this).setSmallIcon(R.drawable.ic_stat_ic_action_send_now)
+				.setContentTitle("ChitChat").setContentText("Your message has been sent !").setSound(soundUri).setAutoCancel(true);;
+		mNotifBuilder.setContentIntent(resultPendingIntent);
+		mNotifyMgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+		
+		mRecipientList = (ListView) findViewById(R.id.recipient_list);
+		mEmptyText = (TextView) findViewById(R.id.empty_state_text);
+		mEmptyImage = (ImageView) findViewById(R.id.empty_state_image);
 		mRecipientList.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 		mMediaUri = getIntent().getData();
 		mFileType = getIntent().getExtras().getString(Constants.FILE_TYPE);
@@ -59,78 +84,71 @@ public class RecipientsActivity extends Activity {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				// TODO Auto-generated method stub
-				if(mRecipientList.getCheckedItemCount()>0)
-				{
+				if (mRecipientList.getCheckedItemCount() > 0) {
 					mSend.setVisible(true);
-				}
-				else
-				{
+				} else {
 					mSend.setVisible(false);
 				}
 			}
 		});
 	}
 	
-	public ParseObject createMessage()
-	{
+	
+
+	public ParseObject createMessage() {
 		ParseObject message = new ParseObject(Constants.CLASS_MESSAGES);
 		message.put(Constants.SENDER_NAME, currentUser.getString("Name"));
 		message.put(Constants.SENDER_ID, currentUser.getObjectId());
-		message.put(Constants.RECIPIENT_IDS,getRecipientIds());
-		message.put(Constants.FILE_TYPE,mFileType);
-		//message.put(Constants.TEXT_CONTENTS, ComposeTextActivity.msg);
-		//message.put(Constants.TEXT_CONTENTS, ComposeTextActivity.msg);
-		//if(ChatsActivity.flag==0)
-		//{
-			byte[] fileData = FileHelper.getByteArrayFromFile(RecipientsActivity.this, mMediaUri);
-			if(fileData==null)
-			{
-				return null;
+		message.put(Constants.RECIPIENT_IDS, getRecipientIds());
+		message.put(Constants.FILE_TYPE, mFileType);
+		// message.put(Constants.TEXT_CONTENTS, ComposeTextActivity.msg);
+		// message.put(Constants.TEXT_CONTENTS, ComposeTextActivity.msg);
+		// if(ChatsActivity.flag==0)
+		// {
+		byte[] fileData = FileHelper.getByteArrayFromFile(
+				RecipientsActivity.this, mMediaUri);
+		if (fileData == null) {
+			return null;
+		} else {
+			if (mFileType.equals(Constants.TYPE_PICTURE)) {
+				fileData = FileHelper.reduceImageForUpload(fileData);
 			}
-			else
-			{
-				if(mFileType.equals(Constants.TYPE_PICTURE))
-				{
-					fileData = FileHelper.reduceImageForUpload(fileData);
-				}
-				String fileName = FileHelper.getFileName(RecipientsActivity.this, mMediaUri, mFileType);
-				ParseFile mFile = new ParseFile(fileName, fileData);
-				message.put(Constants.FILE, mFile);
-				return message;
-			}
+			String fileName = FileHelper.getFileName(RecipientsActivity.this,
+					mMediaUri, mFileType);
+			ParseFile mFile = new ParseFile(fileName, fileData);
+			message.put(Constants.FILE, mFile);
+			return message;
+		}
 
-//		}
-		/*else if(ChatsActivity.flag==1)
-		{
-			message.put(Constants.FILE, "N/A");
-		}*/
-				
+		// }
+		/*
+		 * else if(ChatsActivity.flag==1) { message.put(Constants.FILE, "N/A");
+		 * }
+		 */
+
 	}
-	
-	/*public ParseObject createTextMessage()
-	{
-		ParseObject message = new ParseObject(Constants.CLASS_TEXT_MESSAGES);
-		message.put(Constants.SENDER_NAME, currentUser.getUsername());
-		message.put(Constants.SENDER_ID, currentUser.getObjectId());
-		message.put(Constants.RECIPIENT_IDS,getRecipientIds());
-		message.put(Constants.FILE_TYPE,Constants.TEXT_TYPE);
-		message.put(Constants.TEXT_CONTENTS, ComposeTextActivity.msg);
-		return message;
-	}*/
-	
-	public ArrayList<String> getRecipientIds()
-	{
+
+	/*
+	 * public ParseObject createTextMessage() { ParseObject message = new
+	 * ParseObject(Constants.CLASS_TEXT_MESSAGES);
+	 * message.put(Constants.SENDER_NAME, currentUser.getUsername());
+	 * message.put(Constants.SENDER_ID, currentUser.getObjectId());
+	 * message.put(Constants.RECIPIENT_IDS,getRecipientIds());
+	 * message.put(Constants.FILE_TYPE,Constants.TEXT_TYPE);
+	 * message.put(Constants.TEXT_CONTENTS, ComposeTextActivity.msg); return
+	 * message; }
+	 */
+
+	public ArrayList<String> getRecipientIds() {
 		ArrayList<String> recipientIds = new ArrayList<String>();
-		for(int i = 0;i<mRecipientList.getCount();i++)
-		{
-			if(mRecipientList.isItemChecked(i))
-			{
+		for (int i = 0; i < mRecipientList.getCount(); i++) {
+			if (mRecipientList.isItemChecked(i)) {
 				recipientIds.add(pfriends.get(i).getObjectId());
 			}
 		}
 		return recipientIds;
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.recipients_menu, menu);
@@ -140,19 +158,16 @@ public class RecipientsActivity extends Activity {
 
 	public boolean onOptionsItemSelected(MenuItem item) {
 		int id = item.getItemId();
-		if(id==R.id.action_send)
-		{
-			//do sending here
-			//if(ChatsActivity.flag==0)
-			//{
+		if (id == R.id.action_send) {
+			// do sending here
+			// if(ChatsActivity.flag==0)
+			// {
 			ParseObject message = createMessage();
-			if(message!=null)
-			{
+			if (message != null) {
 				send(message);
-				finish(); 
-			}
-			else if(message==null)
-			{
+				Toast.makeText(RecipientsActivity.this,R.string.message_sent_success,Toast.LENGTH_SHORT).show();
+				finish();
+			} else if (message == null) {
 				AlertDialog.Builder builder = new AlertDialog.Builder(
 						RecipientsActivity.this);
 				builder.setMessage(R.string.message_error);
@@ -161,75 +176,39 @@ public class RecipientsActivity extends Activity {
 				AlertDialog dialog = builder.create();
 				dialog.show();
 			}
-			
-			/*else if(ChatsActivity.flag==1)
-			{
-				ParseObject message = createTextMessage();
-				if(message!=null)
-				{
-					sendText(message);
-					finish(); 
-				}
-				else if(message==null)
-				{
-					AlertDialog.Builder builder = new AlertDialog.Builder(
-							RecipientsActivity.this);
-					builder.setMessage(R.string.message_error);
-					builder.setTitle(R.string.signup_error_title);
-					builder.setPositiveButton(android.R.string.ok, null);
-					AlertDialog dialog = builder.create();
-					dialog.show();
-				}
-			}*/
+
+			/*
+			 * else if(ChatsActivity.flag==1) { ParseObject message =
+			 * createTextMessage(); if(message!=null) { sendText(message);
+			 * finish(); } else if(message==null) { AlertDialog.Builder builder
+			 * = new AlertDialog.Builder( RecipientsActivity.this);
+			 * builder.setMessage(R.string.message_error);
+			 * builder.setTitle(R.string.signup_error_title);
+			 * builder.setPositiveButton(android.R.string.ok, null); AlertDialog
+			 * dialog = builder.create(); dialog.show(); } }
+			 */
 		}
 		
+		else if(id==android.R.id.home)
+		{
+	        NavUtils.navigateUpFromSameTask(this);
+	        return true;
+		}
+
 		return super.onOptionsItemSelected(item);
 	}
 
-	
 	private void send(ParseObject message) {
 		// TODO Auto-generated method stub
 		message.saveInBackground(new SaveCallback() {
-			
-			@Override
-			public void done(ParseException e) {
-				// TODO Auto-generated method stub
-				if(e==null)
-				{
-					Toast.makeText(RecipientsActivity.this, R.string.message_sent_success, Toast.LENGTH_SHORT).show();
-				}
-				else
-				{
-					//if(!isFinishing()){
-					AlertDialog.Builder builder = new AlertDialog.Builder(
-							RecipientsActivity.this);
-					builder.setMessage(R.string.message_error);
-					builder.setTitle(R.string.signup_error_title);
-					builder.setPositiveButton(android.R.string.ok, null);
-					AlertDialog dialog = builder.create();
-					dialog.show();
-					}
-				}
-			//}
-		});
-	}
 
-	
-	/*private void sendText(ParseObject message) {
-		// TODO Auto-generated method stub
-		message.saveInBackground(new SaveCallback() {
-			
 			@Override
 			public void done(ParseException e) {
 				// TODO Auto-generated method stub
-				if(e==null)
-				{
-					Toast.makeText(RecipientsActivity.this, R.string.message_sent_success, Toast.LENGTH_SHORT).show();
-					Intent i = new Intent(RecipientsActivity.this,ChatsActivity.class);
-					startActivity(i);
-				}
-				else
-				{
+				if (e == null) {
+					mNotifyMgr.notify(mNotificationId, mNotifBuilder.build());
+				} else {
+					// if(!isFinishing()){
 					AlertDialog.Builder builder = new AlertDialog.Builder(
 							RecipientsActivity.this);
 					builder.setMessage(R.string.message_error);
@@ -239,8 +218,24 @@ public class RecipientsActivity extends Activity {
 					dialog.show();
 				}
 			}
+			// }
 		});
-	}*/
+	}
+
+	/*
+	 * private void sendText(ParseObject message) { // TODO Auto-generated
+	 * method stub message.saveInBackground(new SaveCallback() {
+	 * 
+	 * @Override public void done(ParseException e) { // TODO Auto-generated
+	 * method stub if(e==null) { Toast.makeText(RecipientsActivity.this,
+	 * R.string.message_sent_success, Toast.LENGTH_SHORT).show(); Intent i = new
+	 * Intent(RecipientsActivity.this,ChatsActivity.class); startActivity(i); }
+	 * else { AlertDialog.Builder builder = new AlertDialog.Builder(
+	 * RecipientsActivity.this); builder.setMessage(R.string.message_error);
+	 * builder.setTitle(R.string.signup_error_title);
+	 * builder.setPositiveButton(android.R.string.ok, null); AlertDialog dialog
+	 * = builder.create(); dialog.show(); } } }); }
+	 */
 
 	@Override
 	public void onResume() {
@@ -291,7 +286,5 @@ public class RecipientsActivity extends Activity {
 					}
 				});
 	}
-	
-	
 
 }

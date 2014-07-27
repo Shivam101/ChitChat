@@ -58,7 +58,7 @@ public class ProfileFragment extends Fragment {
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// TODO Auto-generated method stub
-		super.onActivityResult(requestCode, resultCode, data);
+		//super.onActivityResult(requestCode, resultCode, data);
 		//getActivity();
 		if(resultCode == Activity.RESULT_OK)
 		{
@@ -71,13 +71,15 @@ public class ProfileFragment extends Fragment {
 				else
 				{
 					pictureUri = data.getData();
-					//Picasso.with(getActivity()).load(pictureUri.toString()).into(img);
+					Picasso.with(getActivity()).load(pictureUri.toString()).into(img);
+					Toast.makeText(getActivity(), "ffdc", Toast.LENGTH_SHORT).show();
+					
 				}
 			}
-			else
-			{
-				super.onActivityResult(requestCode, resultCode, data);
-			}
+			//else
+			//{
+				//super.onActivityResult(requestCode, resultCode, data);
+			//}
 		}
 	}
 

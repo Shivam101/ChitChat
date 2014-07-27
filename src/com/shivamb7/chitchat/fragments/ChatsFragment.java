@@ -1,12 +1,13 @@
 package com.shivamb7.chitchat.fragments;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,12 +35,23 @@ public class ChatsFragment extends Fragment {
 	ListView mMessageList;
 	TextView mEmptyText;
 	ImageView mEmptyImage;
+	SwipeRefreshLayout mSwipeRefreshLayout;
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		getActivity().setProgressBarIndeterminateVisibility(false);
 		View rootView = inflater.inflate(R.layout.fragment_chats, container,
 				false);
+		mSwipeRefreshLayout = (SwipeRefreshLayout)rootView.findViewById(R.id.swipeRefresh);
+		mSwipeRefreshLayout.setColorScheme(R.color.orange_300, R.color.orange_500, R.color.orange_700, R.color.orange_900);
+		mSwipeRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
+			
+			@Override
+			public void onRefresh() {
+				// TODO Auto-generated method stub
+				retrieveMessages();
+			}
+		});
 		mMessageList = (ListView) rootView.findViewById(R.id.messages_list);
 		mEmptyText = (TextView) rootView.findViewById(R.id.empty_state_text);
 		mEmptyImage = (ImageView) rootView.findViewById(R.id.empty_state_image);
@@ -76,27 +88,25 @@ public class ChatsFragment extends Fragment {
 		super.onResume();
 		getActivity().setProgressBarIndeterminateVisibility(true);
 		//List<ParseQuery<ParseObject>> queries = new ArrayList<ParseQuery<ParseObject>>();
+		retrieveMessages();
+	}
+
+	public void retrieveMessages() {
 		ParseQuery<ParseObject> messageQuery = new ParseQuery<ParseObject>("Messages");
 		messageQuery.whereEqualTo(
 				com.shivamb7.chitchat.workers.Constants.RECIPIENT_IDS,
 				currentUser.getObjectId());
 		messageQuery.addAscendingOrder("createdAt");
-		/*ParseQuery<ParseObject> messageQuery2 = new ParseQuery<ParseObject>("TextMessages");
-		messageQuery2.whereEqualTo(
-				com.shivamb7.chitchat.workers.Constants.RECIPIENT_IDS,
-				currentUser.getObjectId());
-		messageQuery2.addAscendingOrder("createdAt");
-		queries.add(messageQuery);
-		queries.add(messageQuery2);
-		ParseQuery<ParseObject> superQuery = new ParseQuery();
-		ParseQuery.or(queries);
-		*/
 		messageQuery.findInBackground(new FindCallback<ParseObject>() {
 
 			@Override
 			public void done(List<ParseObject> pobjects, ParseException e) {
 				// TODO Auto-generated method stub
 				getActivity().setProgressBarIndeterminateVisibility(false);
+				if(mSwipeRefreshLayout.isRefreshing())
+				{
+					mSwipeRefreshLayout.setRefreshing(false);
+				}
 				if (e == null) {
 					messages = pobjects;
 					String[] usernames = new String[messages.size()];

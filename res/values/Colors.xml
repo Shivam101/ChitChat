@@ -20,6 +20,12 @@
     <color name="darker_gray">#aaa</color>
     <color name="orange_800">#ef6c00</color> <!-- Use with white text -->
     <color name="orange_900">#e65100</color> <!-- Use with white text -->
+    <color name="orange_700">#f57c00</color> <!-- Use with black text -->
+    <color name="orange_600">#fb8c00</color> <!-- Use with black text -->
+    <color name="orange_200">#ffcc80</color> <!-- Use with black text -->
+    <color name="orange_300">#ffb74d</color> <!-- Use with black text -->
+    <color name="orange_400">#ffa726</color> <!-- Use with black text -->
+    <color name="orange_500">#ff9800</color> <!-- Use with black text -->
     <color name="orange_050">#fff3e0</color> <!-- Use with black text -->
     <color name="orange_100">#ffe0b2</color> <!-- Use with black text -->
 

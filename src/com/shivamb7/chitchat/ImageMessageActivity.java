@@ -1,12 +1,14 @@
 package com.shivamb7.chitchat;
 
-import com.squareup.picasso.Picasso;
-
 import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
+import android.view.MenuItem;
 import android.view.Window;
 import android.widget.ImageView;
+
+import com.squareup.picasso.Picasso;
 
 public class ImageMessageActivity extends Activity {
 
@@ -18,8 +20,19 @@ public class ImageMessageActivity extends Activity {
 		setContentView(R.layout.activity_image_message);
 		mImageView = (ImageView)findViewById(R.id.image);
 		Uri imageUri = getIntent().getData();
+	    getActionBar().setDisplayHomeAsUpEnabled(true);
 		setProgressBarIndeterminateVisibility(true);
-		Picasso.with(this).load(imageUri.toString()).into(mImageView);
+		Picasso.with(this).load(imageUri.toString()).placeholder(R.drawable.ic_action_picture_orange).into(mImageView);
 		setProgressBarIndeterminateVisibility(false);
+	}
+	
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    switch (item.getItemId()) {
+	    // Respond to the action bar's Up/Home button
+	    case android.R.id.home:
+	        NavUtils.navigateUpFromSameTask(this);
+	        return true;
+	    }
+	    return super.onOptionsItemSelected(item);
 	}
 }

@@ -51,7 +51,7 @@ Sed nisl enim, posuere a est a, consectetur condimentum tortor. Sed eget eros eg
     </string-array>
 
     <string name="title_activity_recipients">Send To..</string>
-    <string name="message_sent_success">Message sent successfully !</string>
+    <string name="message_sent_success">Relax. We will notify you when your message is sent. </string>
     <string name="title_activity_image_message">ImageMessageActivity</string>
     <string name="title_activity_compose_text">Compose Text Message</string>
     <string name="enter_text_message">Enter Text Message</string>
