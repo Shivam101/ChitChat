@@ -561,6 +561,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int white=0x7f060013;
     }
     public static final class dimen {
+        public static final int activity_horizontal_margin=0x7f09000d;
+        public static final int activity_vertical_margin=0x7f09000e;
         public static final int default_circle_indicator_radius=0x7f090000;
         public static final int default_circle_indicator_stroke_width=0x7f090001;
         public static final int default_line_indicator_gap_width=0x7f090003;
@@ -574,6 +576,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int default_title_indicator_text_size=0x7f09000a;
         public static final int default_title_indicator_title_padding=0x7f09000b;
         public static final int default_title_indicator_top_padding=0x7f09000c;
+        public static final int message_list_item_vertical_margin=0x7f09000f;
     }
     public static final class drawable {
         public static final int ab_background_textured_chitchat=0x7f020000;
@@ -610,42 +613,43 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int ic_action_video_orange=0x7f02001f;
         public static final int ic_launcher=0x7f020020;
         public static final int ic_stat_ic_action_send_now=0x7f020021;
-        public static final int list_focused_chitchat=0x7f020022;
-        public static final int list_pressed_chitchat=0x7f020023;
-        public static final int menu_dropdown_panel_chitchat=0x7f020024;
-        public static final int placeholder=0x7f020025;
-        public static final int progress_bg_chitchat=0x7f020026;
-        public static final int progress_horizontal_chitchat=0x7f020027;
-        public static final int progress_primary_chitchat=0x7f020028;
-        public static final int progress_secondary_chitchat=0x7f020029;
+        public static final int ic_stat_ic_launcher_web=0x7f020022;
+        public static final int list_focused_chitchat=0x7f020023;
+        public static final int list_pressed_chitchat=0x7f020024;
+        public static final int menu_dropdown_panel_chitchat=0x7f020025;
+        public static final int placeholder=0x7f020026;
+        public static final int progress_bg_chitchat=0x7f020027;
+        public static final int progress_horizontal_chitchat=0x7f020028;
+        public static final int progress_primary_chitchat=0x7f020029;
+        public static final int progress_secondary_chitchat=0x7f02002a;
         /**  Use with black text 
          */
-        public static final int screen_background_dark_transparent=0x7f02003e;
-        public static final int selectable_background_chitchat=0x7f02002a;
-        public static final int spinner_ab_default_chitchat=0x7f02002b;
-        public static final int spinner_ab_disabled_chitchat=0x7f02002c;
-        public static final int spinner_ab_focused_chitchat=0x7f02002d;
-        public static final int spinner_ab_pressed_chitchat=0x7f02002e;
-        public static final int spinner_background_ab_chitchat=0x7f02002f;
-        public static final int tab_indicator_ab_chitchat=0x7f020030;
-        public static final int tab_selected_chitchat=0x7f020031;
-        public static final int tab_selected_focused_chitchat=0x7f020032;
-        public static final int tab_selected_pressed_chitchat=0x7f020033;
-        public static final int tab_unselected_chitchat=0x7f020034;
-        public static final int tab_unselected_focused_chitchat=0x7f020035;
-        public static final int tab_unselected_pressed_chitchat=0x7f020036;
-        public static final int vpi__tab_indicator=0x7f020037;
-        public static final int vpi__tab_selected_focused_holo=0x7f020038;
-        public static final int vpi__tab_selected_holo=0x7f020039;
-        public static final int vpi__tab_selected_pressed_holo=0x7f02003a;
-        public static final int vpi__tab_unselected_focused_holo=0x7f02003b;
-        public static final int vpi__tab_unselected_holo=0x7f02003c;
-        public static final int vpi__tab_unselected_pressed_holo=0x7f02003d;
+        public static final int screen_background_dark_transparent=0x7f02003f;
+        public static final int selectable_background_chitchat=0x7f02002b;
+        public static final int spinner_ab_default_chitchat=0x7f02002c;
+        public static final int spinner_ab_disabled_chitchat=0x7f02002d;
+        public static final int spinner_ab_focused_chitchat=0x7f02002e;
+        public static final int spinner_ab_pressed_chitchat=0x7f02002f;
+        public static final int spinner_background_ab_chitchat=0x7f020030;
+        public static final int tab_indicator_ab_chitchat=0x7f020031;
+        public static final int tab_selected_chitchat=0x7f020032;
+        public static final int tab_selected_focused_chitchat=0x7f020033;
+        public static final int tab_selected_pressed_chitchat=0x7f020034;
+        public static final int tab_unselected_chitchat=0x7f020035;
+        public static final int tab_unselected_focused_chitchat=0x7f020036;
+        public static final int tab_unselected_pressed_chitchat=0x7f020037;
+        public static final int vpi__tab_indicator=0x7f020038;
+        public static final int vpi__tab_selected_focused_holo=0x7f020039;
+        public static final int vpi__tab_selected_holo=0x7f02003a;
+        public static final int vpi__tab_selected_pressed_holo=0x7f02003b;
+        public static final int vpi__tab_unselected_focused_holo=0x7f02003c;
+        public static final int vpi__tab_unselected_holo=0x7f02003d;
+        public static final int vpi__tab_unselected_pressed_holo=0x7f02003e;
     }
     public static final class id {
-        public static final int action_add_friends=0x7f050029;
-        public static final int action_logout=0x7f050028;
-        public static final int action_send=0x7f05002a;
+        public static final int action_add_friends=0x7f05002a;
+        public static final int action_logout=0x7f050029;
+        public static final int action_send=0x7f05002b;
         public static final int add_friends_list=0x7f050006;
         public static final int app_name_heading=0x7f05000c;
         public static final int bottom=0x7f050003;
@@ -662,16 +666,17 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int friends_list=0x7f050021;
         public static final int image=0x7f05000b;
         public static final int imgIcon=0x7f05001c;
+        public static final int message_time=0x7f050024;
         public static final int message_type_icon=0x7f050023;
         public static final int messages_list=0x7f050020;
         public static final int mpager=0x7f050007;
         public static final int name_field=0x7f050018;
         public static final int none=0x7f050000;
         public static final int password_field=0x7f05000e;
-        public static final int profile_friends=0x7f050027;
-        public static final int profile_name=0x7f050026;
-        public static final int profile_picture=0x7f050024;
-        public static final int profile_username=0x7f050025;
+        public static final int profile_friends=0x7f050028;
+        public static final int profile_name=0x7f050027;
+        public static final int profile_picture=0x7f050025;
+        public static final int profile_username=0x7f050026;
         public static final int recipient_list=0x7f050013;
         public static final int register_button=0x7f050012;
         public static final int register_final=0x7f05001a;
@@ -741,6 +746,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int lipsum=0x7f0b0020;
         public static final int long_text_error=0x7f0b0028;
         public static final int message_error=0x7f0b0012;
+        public static final int message_notification=0x7f0b0029;
         public static final int message_sent_success=0x7f0b0023;
         public static final int next=0x7f0b000a;
         public static final int notregistered=0x7f0b0006;

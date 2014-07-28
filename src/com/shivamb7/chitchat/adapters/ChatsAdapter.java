@@ -1,13 +1,10 @@
 package com.shivamb7.chitchat.adapters;
 
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-import com.shivamb7.chitchat.ChatsActivity;
-import com.shivamb7.chitchat.R;
-import com.shivamb7.chitchat.workers.Constants;
-
 import android.content.Context;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +12,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
-import com.parse.FindCallback;
 import com.parse.ParseObject;
+import com.shivamb7.chitchat.R;
+import com.shivamb7.chitchat.workers.Constants;
 
 public class ChatsAdapter extends ArrayAdapter<ParseObject> {
 	
@@ -40,12 +37,18 @@ public class ChatsAdapter extends ArrayAdapter<ParseObject> {
 		holder = new ViewHolder();
 		holder.iconImage = (ImageView)convertView.findViewById(R.id.message_type_icon);
 		holder.nameLabel = (TextView)convertView.findViewById(R.id.sender_name);
+		holder.timeLabel = (TextView)convertView.findViewById(R.id.message_time);
+		convertView.setTag(holder); //VERY IMPORTANT LINE !!!
 		}
 		else
 		{
 			holder = (ViewHolder)convertView.getTag();
 		}
 		ParseObject message = mMessages.get(position);
+		Date createdDate = message.getCreatedAt();
+		long currentTime = new Date().getTime();
+		String convertedTime = DateUtils.getRelativeTimeSpanString(createdDate.getTime(), currentTime, DateUtils.SECOND_IN_MILLIS).toString();
+		holder.timeLabel.setText(convertedTime);
 		if(message.getString(Constants.FILE_TYPE).equals(Constants.TYPE_PICTURE))
 		{
 			holder.iconImage.setImageResource(R.drawable.ic_action_picture_orange);
@@ -66,6 +69,14 @@ public class ChatsAdapter extends ArrayAdapter<ParseObject> {
 	{
 		ImageView iconImage;
 		TextView nameLabel;
+		TextView timeLabel;
+	}
+	
+	public void refreshAdapter(List<ParseObject> msgs)
+	{
+		mMessages.clear();
+		mMessages.addAll(msgs);
+		notifyDataSetChanged();
 	}
 
 }

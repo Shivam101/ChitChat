@@ -1,9 +1,12 @@
 package com.shivamb7.chitchat;
 
+import java.util.Currency;
+
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 import com.shivamb7.chitchat.R;
+import com.shivamb7.chitchat.workers.ChitChatApplication;
 import com.shivamb7.chitchat.workers.RippleView;
 
 import android.app.ActionBar;
@@ -72,6 +75,7 @@ public class RegisterActivity extends Activity {
 							if(e==null)
 							{
 								//success !
+								ChitChatApplication.updateInstallation(ParseUser.getCurrentUser());
 								RegisterActivity.this.progressDialog.dismiss();
 								Intent i = new Intent(RegisterActivity.this,RegisterActivity2.class);
 								i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

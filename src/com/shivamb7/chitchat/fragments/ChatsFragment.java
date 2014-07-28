@@ -36,14 +36,14 @@ public class ChatsFragment extends Fragment {
 	TextView mEmptyText;
 	ImageView mEmptyImage;
 	SwipeRefreshLayout mSwipeRefreshLayout;
-
+	ChatsAdapter mAdapter;
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		getActivity().setProgressBarIndeterminateVisibility(false);
 		View rootView = inflater.inflate(R.layout.fragment_chats, container,
 				false);
 		mSwipeRefreshLayout = (SwipeRefreshLayout)rootView.findViewById(R.id.swipeRefresh);
-		mSwipeRefreshLayout.setColorScheme(R.color.orange_300, R.color.orange_500, R.color.orange_700, R.color.orange_900);
+		mSwipeRefreshLayout.setColorScheme(R.color.orange_200, R.color.orange_400, R.color.orange_600, R.color.orange_800);
 		mSwipeRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
 			
 			@Override
@@ -121,11 +121,19 @@ public class ChatsFragment extends Fragment {
 						mEmptyText.setVisibility(View.VISIBLE);
 						mMessageList.setVisibility(View.GONE);
 					} else {
+						
 						mEmptyImage.setVisibility(View.GONE);
 						mEmptyText.setVisibility(View.GONE);
 						mMessageList.setVisibility(View.VISIBLE);
-						ChatsAdapter mAdapter = new ChatsAdapter(getActivity(), messages);
+						if(mMessageList.getAdapter()==null)
+						{
+						mAdapter = new ChatsAdapter(getActivity(), messages);
 						mMessageList.setAdapter(mAdapter);
+						}
+						else
+						{
+							mAdapter.refreshAdapter(messages);
+						}
 					}
 				}
 			}

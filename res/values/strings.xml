@@ -57,5 +57,6 @@ Sed nisl enim, posuere a est a, consectetur condimentum tortor. Sed eget eros eg
     <string name="enter_text_message">Enter Text Message</string>
     <string name="empty_text_message">Text cannot be empty</string>
     <string name="long_text_error">Text cannot be longer than 140 characters !</string>
+    <string name="message_notification">New chit from : %s!</string>
 
 </resources>

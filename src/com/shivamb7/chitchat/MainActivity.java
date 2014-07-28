@@ -4,6 +4,7 @@ import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.shivamb7.chitchat.R;
+import com.shivamb7.chitchat.workers.ChitChatApplication;
 import com.shivamb7.chitchat.workers.RippleView;
 
 import android.app.ActionBar;
@@ -74,6 +75,7 @@ public class MainActivity extends Activity {
 							if(e==null)
 							{
 								//success
+								ChitChatApplication.updateInstallation(user);
 								Intent i = new Intent(MainActivity.this,ChatsActivity.class);
 								i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 								i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);

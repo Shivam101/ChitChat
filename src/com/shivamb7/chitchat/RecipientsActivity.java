@@ -28,7 +28,10 @@ import android.widget.Toast;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
+import com.parse.ParseInstallation;
 import com.parse.ParseObject;
+import com.parse.ParsePush;
+import com.parse.ParseQuery;
 import com.parse.ParseRelation;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
@@ -127,6 +130,16 @@ public class RecipientsActivity extends Activity {
 		 */
 
 	}
+	
+	public void sendPushNotifications()
+	{
+		ParseQuery<ParseInstallation> pushQuery = ParseInstallation.getQuery();
+		pushQuery.whereContainedIn(Constants.USER_ID, getRecipientIds());
+		ParsePush push = new ParsePush();
+		push.setQuery(pushQuery);
+		push.setMessage(getString(R.string.message_notification,ParseUser.getCurrentUser().getUsername()));
+		push.sendInBackground();
+	}
 
 	/*
 	 * public ParseObject createTextMessage() { ParseObject message = new
@@ -207,6 +220,7 @@ public class RecipientsActivity extends Activity {
 				// TODO Auto-generated method stub
 				if (e == null) {
 					mNotifyMgr.notify(mNotificationId, mNotifBuilder.build());
+					sendPushNotifications();
 				} else {
 					// if(!isFinishing()){
 					AlertDialog.Builder builder = new AlertDialog.Builder(

@@ -1,5 +1,8 @@
 package com.shivamb7.chitchat;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
@@ -21,9 +24,18 @@ public class ImageMessageActivity extends Activity {
 		mImageView = (ImageView)findViewById(R.id.image);
 		Uri imageUri = getIntent().getData();
 	    getActionBar().setDisplayHomeAsUpEnabled(true);
-		setProgressBarIndeterminateVisibility(true);
+		//setProgressBarIndeterminateVisibility(true);
 		Picasso.with(this).load(imageUri.toString()).placeholder(R.drawable.ic_action_picture_orange).into(mImageView);
-		setProgressBarIndeterminateVisibility(false);
+		//setProgressBarIndeterminateVisibility(false);
+		Timer timer = new Timer();
+		timer.schedule(new TimerTask() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				finish();
+			}
+		}, 20000);
 	}
 	
 	public boolean onOptionsItemSelected(MenuItem item) {

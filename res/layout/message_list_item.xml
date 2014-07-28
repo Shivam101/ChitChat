@@ -13,24 +13,39 @@
 
         <TextView
             android:id="@+id/sender_name"
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/message_type_icon"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="15dp"
-            android:gravity="center_vertical"
-            android:minHeight="?android:attr/listPreferredItemHeightSmall"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:textSize="18sp" />
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <ImageView
             android:id="@+id/message_type_icon"
-            android:layout_width="96px"
-            android:layout_height="96px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:gravity="center_vertical"
-            android:padding="2dip" />
+            android:layout_alignParentTop="true"
+            android:paddingBottom="@dimen/message_list_item_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/message_list_item_vertical_margin"
+             />
+        
+        <TextView 
+            android:id="@+id/message_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/message_type_icon"
+            android:layout_alignParentLeft="true"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+			android:textSize="12sp"
+			android:layout_below="@id/sender_name"
+			android:layout_marginTop="3dp"
+            android:textColor="@android:color/tertiary_text_light"
+            android:text="Time here"
+            />
+
     </RelativeLayout>
 
 </FrameLayout>
