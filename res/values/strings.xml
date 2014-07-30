@@ -26,7 +26,7 @@
     <string name="title_activity_register_activity2">RegisterActivity2</string>
     <string name="title_activity_chats">ChitChat</string>
     <string name="empty_state_friends">You haven\'t added any friends !</string>
-    <string name="empty_state_chats">No Chits Here !</string>
+    <string name="empty_state_chats">No Chits Here :(</string>
     <string name="fragment1">Chats</string>
     <string name="storage_access_error">Device storage could not be accessed</string>
     <string name="fragment2">People</string>
@@ -57,6 +57,8 @@ Sed nisl enim, posuere a est a, consectetur condimentum tortor. Sed eget eros eg
     <string name="enter_text_message">Enter Text Message</string>
     <string name="empty_text_message">Text cannot be empty</string>
     <string name="long_text_error">Text cannot be longer than 140 characters !</string>
-    <string name="message_notification">New chit from : %s!</string>
+    <string name="message_notification">New chit from %s!</string>
+    <string name="my_profile">My Profile</string>
+    <string name="title_activity_profile">My Profile</string>
 
 </resources>

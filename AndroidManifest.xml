@@ -57,7 +57,7 @@
         <activity
             android:name=".AddFriendsActivity"
             android:label="@string/title_activity_add_friends"
-            android:parentActivityName="com.shivamb7.chitchat.ChatsActivity" >
+            android:parentActivityName=".ChatsActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.shivamb7.chitchat.ChatsActivity" />
@@ -65,7 +65,7 @@
         <activity
             android:name=".RecipientsActivity"
             android:label="@string/title_activity_recipients"
-            android:parentActivityName="com.shivamb7.chitchat.ChatsActivity" >
+            android:parentActivityName=".ChatsActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.shivamb7.chitchat.ChatsActivity" />
@@ -73,7 +73,7 @@
         <activity
             android:name=".ImageMessageActivity"
             android:label="@string/title_activity_image_message"
-            android:parentActivityName="com.shivamb7.chitchat.ChatsActivity" >
+            android:parentActivityName=".ChatsActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.shivamb7.chitchat.ChatsActivity" />
@@ -101,6 +101,15 @@
                 <category android:name="com.shivamb7.chitchat" />
             </intent-filter>
         </receiver>
+
+        <activity
+            android:name=".ProfileActivity"
+            android:label="@string/title_activity_profile"
+            android:parentActivityName=".ChatsActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.shivamb7.chitchat.ChatsActivity" />
+        </activity>
     </application>
 
 </manifest>

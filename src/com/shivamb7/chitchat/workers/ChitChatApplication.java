@@ -16,7 +16,7 @@ public class ChitChatApplication extends Application {
 		super.onCreate();
 		Parse.initialize(this, "d9MXBG0WtMmelsAAmliJqEpuX6i2cgoGsTOvapE0",
 				"H187AlMPaa5WEZKMI3q5m02qc5lBBUCvgHIrqV3X");
-		PushService.setDefaultPushCallback(this, ChatsActivity.class,R.drawable.ic_stat_ic_launcher_web);
+		//PushService.setDefaultPushCallback(this, ChatsActivity.class,R.drawable.ic_stat_ic_launcher_web);
 		ParseInstallation.getCurrentInstallation().saveInBackground();
 	}
 	

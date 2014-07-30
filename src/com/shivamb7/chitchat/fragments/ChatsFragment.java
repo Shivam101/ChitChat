@@ -1,5 +1,6 @@
 package com.shivamb7.chitchat.fragments;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Intent;
@@ -77,10 +78,27 @@ public class ChatsFragment extends Fragment {
 					mVideoMessageIntent.setDataAndType(fileUri, "video/*");
 					startActivity(mVideoMessageIntent);
 				}
+				
+				//deletion of message
+				List<String> rIDs = msg.getList(Constants.RECIPIENT_IDS);
+				if(rIDs.size()==1)
+				{
+					msg.deleteInBackground();
+				}
+				else
+				{
+					rIDs.remove(currentUser.getObjectId());
+					ArrayList<String> delIds = new ArrayList<String>();
+					delIds.add(currentUser.getObjectId());
+					msg.removeAll(Constants.RECIPIENT_IDS, delIds);
+					msg.saveInBackground();
+				}
 			}
 		});
 		return rootView;
 	}
+	
+	
 
 	@Override
 	public void onResume() {
@@ -96,7 +114,7 @@ public class ChatsFragment extends Fragment {
 		messageQuery.whereEqualTo(
 				com.shivamb7.chitchat.workers.Constants.RECIPIENT_IDS,
 				currentUser.getObjectId());
-		messageQuery.addAscendingOrder("createdAt");
+		messageQuery.addDescendingOrder("createdAt");
 		messageQuery.findInBackground(new FindCallback<ParseObject>() {
 
 			@Override

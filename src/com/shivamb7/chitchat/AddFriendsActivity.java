@@ -6,13 +6,18 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import android.widget.Toast;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -26,6 +31,8 @@ public class AddFriendsActivity extends Activity {
 	List<ParseUser> pusers;
 	ListView mUserList;
 	ParseUser currentUser;
+	EditText mSearch;
+	public static int count = 0;
 	ParseRelation<ParseUser> mFriendRelation;
 
 	@Override
@@ -36,6 +43,17 @@ public class AddFriendsActivity extends Activity {
 	    getActionBar().setDisplayHomeAsUpEnabled(true);
 		mUserList = (ListView) findViewById(R.id.add_friends_list);
 		mUserList.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+		mSearch = (EditText)findViewById(R.id.etsearch);
+		mSearch.setOnEditorActionListener(new OnEditorActionListener() {
+			
+			@Override
+			public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+				// TODO Auto-generated method stub
+				Toast.makeText(AddFriendsActivity.this, "Friend search will be available in a future release of ChitChat", Toast.LENGTH_SHORT).show();
+				return false;
+			}
+		});
+		//count = mUserList.getCheckedItemCount();
 		mUserList.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -78,6 +96,7 @@ public class AddFriendsActivity extends Activity {
 		// TODO Auto-generated method stub
 		setProgressBarIndeterminateVisibility(true);
 		super.onResume();
+		Toast.makeText(getApplicationContext(), mUserList.getCheckedItemCount()+"", Toast.LENGTH_SHORT).show();
 		currentUser = ParseUser.getCurrentUser();
 		mFriendRelation = currentUser.getRelation("friendRelation");
 		ParseQuery<ParseUser> mQuery = ParseUser.getQuery();

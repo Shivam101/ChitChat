@@ -41,6 +41,7 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
+import com.parse.PushService;
 import com.shivamb7.chitchat.R;
 import com.shivamb7.chitchat.adapters.LevelAdapter;
 import com.shivamb7.chitchat.fragments.ChatsFragment;
@@ -168,6 +169,7 @@ public class ChatsActivity extends FragmentActivity implements
 		setContentView(R.layout.activity_chats);
 		ParseAnalytics.trackAppOpened(getIntent());
 		final ActionBar ab = getActionBar();
+		PushService.setDefaultPushCallback(this, ChatsActivity.class,R.drawable.ic_stat_ic_launcher_web);
 		Typeface ironman = Typeface.createFromAsset(getAssets(),
 				"actionman.ttf");
 		int titleId = getResources().getIdentifier("action_bar_title", "id",
@@ -301,6 +303,11 @@ public class ChatsActivity extends FragmentActivity implements
 			Intent i = new Intent(ChatsActivity.this, AddFriendsActivity.class);
 			startActivity(i);
 		}
+		else if(id==R.id.action_profile)
+		{
+			Intent i = new Intent(ChatsActivity.this,ProfileActivity.class);
+			startActivity(i);
+		}
 		return super.onOptionsItemSelected(item);
 	}
 
@@ -321,10 +328,10 @@ public class ChatsActivity extends FragmentActivity implements
 			} else if (position == 1) {
 				Fragment frag2 = new ContactsFragment();
 				return frag2;
-			} else if (position == 2) {
-				Fragment frag3 = new ProfileFragment();
-				return frag3;
-			} else {
+			} //else if (position == 2) {
+				//Fragment frag3 = new ProfileFragment();
+				//return frag3;
+			else {
 				Fragment fragment = new DummySectionFragment();
 				Bundle args = new Bundle();
 				args.putInt(DummySectionFragment.ARG_SECTION_NUMBER,
@@ -337,7 +344,7 @@ public class ChatsActivity extends FragmentActivity implements
 
 		public int getCount() {
 			// Show 3 total pages.
-			return 3;
+			return 2;
 		}
 
 		@Override
@@ -348,8 +355,8 @@ public class ChatsActivity extends FragmentActivity implements
 				return getString(R.string.fragment1).toUpperCase(l);
 			case 1:
 				return getString(R.string.fragment2).toUpperCase(l);
-			case 2:
-				return getString(R.string.fragment3).toUpperCase(l);
+			//case 2:
+				//return getString(R.string.fragment3).toUpperCase(l);
 			}
 			return null;
 		}
@@ -360,8 +367,8 @@ public class ChatsActivity extends FragmentActivity implements
 				return R.drawable.ic_action_chat;
 			case 1:
 				return R.drawable.ic_action_group;
-			case 2:
-				return R.drawable.ic_action_person;
+			//case 2:
+				//return R.drawable.ic_action_person;
 			}
 			return position;
 		}

@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.ParseUser;
+import com.shivamb7.chitchat.AddFriendsActivity;
 import com.shivamb7.chitchat.R;
 import com.squareup.picasso.Picasso;
 
@@ -33,8 +34,9 @@ public class ProfileFragment extends Fragment {
 		mFriends = (TextView)rootView.findViewById(R.id.profile_friends);
 		mName.setText(currentUser.getString("Name"));
 		mUsername.setText(currentUser.getUsername());
-		String friendCount = (ContactsFragment.numberofFriends)+" friends";
-		mFriends.setText(friendCount);
+		//String friendCount = (AddFriendsActivity.count)+" friends";
+		//mFriends.setText(friendCount);
+		final Fragment fg = this;
 		img = (com.shivamb7.chitchat.workers.CircularImageView)rootView.findViewById(R.id.profile_picture);
 		img.setBorderColor(getResources().getColor(R.color.orange_800));
 		img.setBorderWidth(40);
@@ -44,10 +46,12 @@ public class ProfileFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				//Toast.makeText(getActivity(), "Stuuf", Toast.LENGTH_SHORT).show();
+				
+				Toast.makeText(getActivity(), "Stuuf", Toast.LENGTH_SHORT).show();
 				Intent choosePictureIntent = new Intent(Intent.ACTION_GET_CONTENT);
 				choosePictureIntent.setType("image/*");
 				getActivity().startActivityForResult(choosePictureIntent, PICK_PICTURE);
+				//getActivity().start
 			}
 		});
 		/*TextView textView = (TextView) rootView.findViewById(R.id.section_label);
@@ -57,11 +61,9 @@ public class ProfileFragment extends Fragment {
 	
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
-		// TODO Auto-generated method stub
-		//super.onActivityResult(requestCode, resultCode, data);
-		//getActivity();
 		if(resultCode == Activity.RESULT_OK)
 		{
+
 			if(requestCode == PICK_PICTURE)
 			{
 				if(data==null)
@@ -76,10 +78,10 @@ public class ProfileFragment extends Fragment {
 					
 				}
 			}
-			//else
-			//{
-				//super.onActivityResult(requestCode, resultCode, data);
-			//}
+			else
+			{
+				super.onActivityResult(requestCode, resultCode, data);
+			}
 		}
 	}
 
