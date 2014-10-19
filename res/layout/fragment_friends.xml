@@ -1,31 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:background="@color/orange_050"
     android:layout_height="match_parent" >
-    
-    <ListView 
-        android:id="@+id/friends_list"
+
+    <GridView
+        android:id="@+id/friends_grid"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        ></ListView>
-    
-     <ImageView
+        android:horizontalSpacing="8dp"
+        android:numColumns="2"
+        android:padding="8dp"
+        android:clipToPadding="false"
+        android:verticalSpacing="8dp" >
+    </GridView>
+
+    <ImageView
         android:id="@+id/empty_state_image"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_centerInParent="true"
-        android:src="@drawable/ic_action_person" />
+        android:src="@drawable/person_black" />
 
     <TextView
         android:id="@+id/empty_state_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/empty_state_image"
-        android:layout_marginTop="10dp"
-        android:textColor="@android:color/tertiary_text_light"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
         android:text="@string/empty_state_friends"
+        android:textColor="@android:color/tertiary_text_light"
         android:textSize="25sp" />
-    
 
 </RelativeLayout>

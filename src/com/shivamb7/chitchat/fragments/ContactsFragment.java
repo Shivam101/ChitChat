@@ -2,31 +2,31 @@ package com.shivamb7.chitchat.fragments;
 
 import java.util.List;
 
-import com.parse.FindCallback;
-import com.parse.ParseException;
-import com.parse.ParseRelation;
-import com.parse.ParseUser;
-import com.shivamb7.chitchat.R;
-
 import android.app.AlertDialog;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseRelation;
+import com.parse.ParseUser;
+import com.shivamb7.chitchat.R;
+import com.shivamb7.chitchat.adapters.FriendGridAdapter;
 
 public class ContactsFragment extends Fragment {
 
 	List<ParseUser> pfriends;
 	ParseUser currentUser;
 	ParseRelation<ParseUser> mFriendRelation;
-	ListView mFriendList;
+	GridView mFriendGrid;
 	TextView mEmptyText;
 	ImageView mEmptyImage;
 	static int numberofFriends;
@@ -35,7 +35,7 @@ public class ContactsFragment extends Fragment {
 			Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.fragment_friends, container,
 				false);
-		mFriendList = (ListView) rootView.findViewById(R.id.friends_list);
+		mFriendGrid = (GridView) rootView.findViewById(R.id.friends_grid);
 		mEmptyText = (TextView) rootView.findViewById(R.id.empty_state_text);
 		mEmptyImage = (ImageView) rootView.findViewById(R.id.empty_state_image);
 		return rootView;
@@ -67,17 +67,25 @@ public class ContactsFragment extends Fragment {
 							if (usernames.length == 0) {
 								mEmptyImage.setVisibility(View.VISIBLE);
 								mEmptyText.setVisibility(View.VISIBLE);
-								mFriendList.setVisibility(View.GONE);
+								mFriendGrid.setVisibility(View.GONE);
 							} else {
 								//numberofFriends = usernames.length;
 								mEmptyImage.setVisibility(View.GONE);
 								mEmptyText.setVisibility(View.GONE);
-								mFriendList.setVisibility(View.VISIBLE);
-								ArrayAdapter<String> mAdapter = new ArrayAdapter<>(
+								mFriendGrid.setVisibility(View.VISIBLE);
+								/*ArrayAdapter<String> mAdapter = new ArrayAdapter<>(
 										getActivity(),
 										android.R.layout.simple_list_item_1,
-										usernames);
-								mFriendList.setAdapter(mAdapter);
+										usernames);*/
+								if(mFriendGrid.getAdapter() == null)
+								{
+								FriendGridAdapter mAdapter = new FriendGridAdapter(getActivity(), pfriends);
+								mFriendGrid.setAdapter(mAdapter);
+								}
+								else
+								{
+									((FriendGridAdapter)(mFriendGrid.getAdapter())).refreshAdapter(pfriends);
+								}
 							}
 						} else {
 

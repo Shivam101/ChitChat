@@ -47,8 +47,9 @@ public class ImageMessageActivity extends Activity {
 		    w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 
 		}
+		
 		//setProgressBarIndeterminateVisibility(true);
-		Picasso.with(this).load(imageUri.toString()).placeholder(R.drawable.ic_action_picture_orange).into(mImageView);
+		Picasso.with(this).load(imageUri.toString()).placeholder(R.drawable.image_loading_2).into(mImageView);
 		//setProgressBarIndeterminateVisibility(false);
 		Timer timer = new Timer();
 		timer.schedule(new TimerTask() {
@@ -58,7 +59,7 @@ public class ImageMessageActivity extends Activity {
 				// TODO Auto-generated method stub
 				finish();
 			}
-		}, 20000);
+		}, 60000);
 	}
 	
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -70,4 +71,5 @@ public class ImageMessageActivity extends Activity {
 	    }
 	    return super.onOptionsItemSelected(item);
 	}
+	
 }

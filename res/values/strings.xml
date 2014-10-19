@@ -60,5 +60,7 @@ Sed nisl enim, posuere a est a, consectetur condimentum tortor. Sed eget eros eg
     <string name="message_notification">New chit from %s!</string>
     <string name="my_profile">My Profile</string>
     <string name="title_activity_profile">My Profile</string>
+    <string name="share_with_friends">Spread the word</string>
+    <string name="remind_me">Remind Me</string>
 
 </resources>

@@ -3,6 +3,7 @@ package com.shivamb7.chitchat.workers;
 import android.app.Application;
 
 import com.parse.Parse;
+import com.parse.ParseFacebookUtils;
 import com.parse.ParseInstallation;
 import com.parse.ParseUser;
 import com.parse.PushService;
@@ -18,6 +19,7 @@ public class ChitChatApplication extends Application {
 				"H187AlMPaa5WEZKMI3q5m02qc5lBBUCvgHIrqV3X");
 		//PushService.setDefaultPushCallback(this, ChatsActivity.class,R.drawable.ic_stat_ic_launcher_web);
 		ParseInstallation.getCurrentInstallation().saveInBackground();
+
 	}
 	
 	public static void updateInstallation(ParseUser user)

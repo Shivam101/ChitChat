@@ -8,18 +8,18 @@ package com.pkmmte.circularimageview;
 
 public final class R {
 	public static final class attr {
-		public static final int border = 0x7f01001f;
-		public static final int border_color = 0x7f010020;
-		public static final int border_width = 0x7f010021;
-		public static final int circularImageViewStyle = 0x7f010027;
-		public static final int selector = 0x7f010022;
-		public static final int selector_color = 0x7f010023;
-		public static final int selector_stroke_color = 0x7f010024;
-		public static final int selector_stroke_width = 0x7f010025;
-		public static final int shadow = 0x7f010026;
+		public static final int border = 0x7f010051;
+		public static final int border_color = 0x7f010052;
+		public static final int border_width = 0x7f010053;
+		public static final int circularImageViewStyle = 0x7f010059;
+		public static final int selector = 0x7f010054;
+		public static final int selector_color = 0x7f010055;
+		public static final int selector_stroke_color = 0x7f010056;
+		public static final int selector_stroke_width = 0x7f010057;
+		public static final int shadow = 0x7f010058;
 	}
 	public static final class styleable {
-		public static final int[] CircularImageView = { 0x7f01001f, 0x7f010020, 0x7f010021, 0x7f010022, 0x7f010023, 0x7f010024, 0x7f010025, 0x7f010026, 0x7f010028, 0x7f010029, 0x7f01002a, 0x7f01002b, 0x7f01002c, 0x7f01002d, 0x7f01002e, 0x7f01002f };
+		public static final int[] CircularImageView = { 0x7f010051, 0x7f010052, 0x7f010053, 0x7f010054, 0x7f010055, 0x7f010056, 0x7f010057, 0x7f010058, 0x7f01005a, 0x7f01005b, 0x7f01005c, 0x7f01005d, 0x7f01005e, 0x7f01005f, 0x7f010060, 0x7f010061 };
 		public static final int CircularImageView_border = 0;
 		public static final int CircularImageView_border_color = 1;
 		public static final int CircularImageView_border_width = 2;
@@ -28,7 +28,7 @@ public final class R {
 		public static final int CircularImageView_selector_stroke_color = 5;
 		public static final int CircularImageView_selector_stroke_width = 6;
 		public static final int CircularImageView_shadow = 7;
-		public static final int[] CustomCircularImageViewTheme = { 0x7f010027 };
+		public static final int[] CustomCircularImageViewTheme = { 0x7f010059 };
 		public static final int CustomCircularImageViewTheme_circularImageViewStyle = 0;
 	}
 }

@@ -12,8 +12,11 @@ import android.app.AlertDialog;
 import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -35,6 +38,12 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.UiLifecycleHelper;
+import com.facebook.model.GraphObject;
+import com.facebook.model.OpenGraphAction;
+import com.facebook.model.OpenGraphObject;
+import com.facebook.widget.FacebookDialog;
+import com.google.android.gms.plus.PlusShare;
 import com.parse.FindCallback;
 import com.parse.ParseAnalytics;
 import com.parse.ParseException;
@@ -60,6 +69,7 @@ public class ChatsActivity extends FragmentActivity implements
 	int TEXT_INTENT_CODE = 5;
 	int MEDIA_TYPE_TEXT = 6;
 	static int flag = 0;
+	private UiLifecycleHelper uiHelper;
 	SectionsPagerAdapter mSectionsPagerAdapter;
 	ViewPager mViewPager;
 	Uri mMediaUri;
@@ -161,6 +171,52 @@ public class ChatsActivity extends FragmentActivity implements
 			}
 		}
 	};
+	
+	DialogInterface.OnClickListener mDialogListener2 = new DialogInterface.OnClickListener() {
+		
+		@Override
+		public void onClick(DialogInterface dialog, int which) {
+			// TODO Auto-generated method stub
+			if(which==0)
+			{
+				/*OpenGraphObject trip = OpenGraphObject.Factory.createForPost("investopad_proximity:city");
+				//trip.setProperty("url", "http://samples.ogp.me/670838023004167");
+				trip.getData().setProperty("title", "Sample City");
+				trip.getData().setProperty("description", "");
+				trip.setType("investopad_proximity:city");
+				OpenGraphAction action = GraphObject.Factory.create(OpenGraphAction.class);
+				action.setProperty("trip", trip);
+				action.setProperty("previewPropertyName", trip);
+				
+				action.setType("me/investopad_proximity:travel");
+				FacebookDialog shareDialog = new FacebookDialog.OpenGraphActionDialogBuilder(ChatsActivity.this, action, "trip")
+				        .build();
+				shareDialog.present();
+				uiHelper.trackPendingDialogCall(shareDialog.present());
+				*/
+				Toast.makeText(ChatsActivity.this, "Under Construction", Toast.LENGTH_SHORT).show();
+			}
+			else if(which==1)
+			{
+				Intent shareIntent = new PlusShare.Builder(ChatsActivity.this).setType("text/plain").setText("Hello. I am "+currentUser.getUsername()+" on ChitChat. Join me !").setContentUrl(Uri.parse("https://www.google.com/shivambhalla")).getIntent();
+			    startActivityForResult(shareIntent, 0);
+			}
+			else if(which==2)
+			{
+				Intent i = new Intent(Intent.ACTION_SEND);
+				i.setType("message/rfc822");
+				i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"shivam.bhalla10@gmail.com"});
+				i.putExtra(Intent.EXTRA_SUBJECT, "ChitChat Invite");
+				i.putExtra(Intent.EXTRA_TEXT   , "Hello. I am "+currentUser.getUsername()+" on ChitChat. Join me !");
+				try {
+				    startActivity(Intent.createChooser(i, "Send mail via..."));
+				} catch (android.content.ActivityNotFoundException ex) {
+				    Toast.makeText(ChatsActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+				}
+			}
+			
+		}
+	};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -169,6 +225,12 @@ public class ChatsActivity extends FragmentActivity implements
 		setContentView(R.layout.activity_chats);
 		ParseAnalytics.trackAppOpened(getIntent());
 		final ActionBar ab = getActionBar();
+		Resources r=getResources();
+		//Drawable d=r.getColor(R.color.orange_800);
+		ab.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ef6c00")));
+		ab.setDisplayShowTitleEnabled(false);
+		ab.setDisplayShowTitleEnabled(true);
+		ab.setDisplayUseLogoEnabled(false);
 		PushService.setDefaultPushCallback(this, ChatsActivity.class,R.drawable.ic_stat_ic_launcher_web);
 		Typeface ironman = Typeface.createFromAsset(getAssets(),
 				"actionman.ttf");
@@ -178,7 +240,7 @@ public class ChatsActivity extends FragmentActivity implements
 		Fab fab = (Fab) findViewById(R.id.fabbutton);
 		fab.setFabColor(Color.parseColor("#ef6c00"));
 		fab.setFabDrawable(getResources().getDrawable(
-				R.drawable.ic_action_send_now));
+				R.drawable.create));
 		fab.showFab();
 		final Level data[] = new Level[] {
 				//new Level("Text", R.drawable.ic_action_chat_orange),
@@ -199,13 +261,15 @@ public class ChatsActivity extends FragmentActivity implements
 								new LevelAdapter(ChatsActivity.this,
 										R.layout.dialog_list_item, data),
 								mDialogListener);
+				
 				AlertDialog dialog = builder.create();
 				dialog.setCustomTitle(customTitle);
+				dialog.getWindow().getAttributes().windowAnimations = R.style.dialog_animation;
 				builder.show();
 
 			}
 		});
-		yourTextView.setTypeface(ironman);
+		//yourTextView.setTypeface(ironman);
 		ab.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		mSectionsPagerAdapter = new SectionsPagerAdapter(
 				getSupportFragmentManager());
@@ -231,7 +295,7 @@ public class ChatsActivity extends FragmentActivity implements
 			// the adapter. Also specify this Activity object, which implements
 			// the TabListener interface, as the callback (listener) for when
 			// this tab is selected.
-			ab.addTab(ab.newTab().setIcon(mSectionsPagerAdapter.getIcon(i))
+			ab.addTab(ab.newTab().setText(mSectionsPagerAdapter.getPageTitle(i))
 					.setTabListener(this));
 		}
 	}
@@ -308,6 +372,31 @@ public class ChatsActivity extends FragmentActivity implements
 			Intent i = new Intent(ChatsActivity.this,ProfileActivity.class);
 			startActivity(i);
 		}
+		else if(id==R.id.action_share)
+		{
+			final Level data2[] = new Level[] {
+					//new Level("Text", R.drawable.ic_action_chat_orange),
+					new Level(" Share to Facebook", R.drawable.post_facebook),
+					new Level(" Share to Google+", R.drawable.post_gplus),
+					new Level(" Share via Email" , R.drawable.email)
+			};
+			
+			LayoutInflater inflater = LayoutInflater
+					.from(getApplicationContext());
+			View customTitle = inflater
+					.inflate(R.layout.dialog_title, null);
+			AlertDialog.Builder builder = new AlertDialog.Builder(
+					ChatsActivity.this).setTitle("Share to..")
+					.setAdapter(
+							new LevelAdapter(ChatsActivity.this,
+									R.layout.dialog_list_item, data2),
+							mDialogListener2);
+			AlertDialog dialog = builder.create();
+			dialog.setCustomTitle(customTitle);
+			builder.show();
+
+			
+		}
 		return super.onOptionsItemSelected(item);
 	}
 
@@ -364,9 +453,9 @@ public class ChatsActivity extends FragmentActivity implements
 		public int getIcon(int position) {
 			switch (position) {
 			case 0:
-				return R.drawable.ic_action_chat;
+				return R.drawable.mms;
 			case 1:
-				return R.drawable.ic_action_group;
+				return R.drawable.people;
 			//case 2:
 				//return R.drawable.ic_action_person;
 			}

@@ -30,8 +30,8 @@ public class MainActivity extends Activity {
 		ActionBar ab = getActionBar();
 		ab.hide();
 		TextView mHeader = (TextView)findViewById(R.id.app_name_heading);
-		Typeface ironman = Typeface.createFromAsset(getAssets(), "actionman.ttf");
-		mHeader.setTypeface(ironman);
+		//Typeface ironman = Typeface.createFromAsset(getAssets(), "actionman.ttf");
+		//mHeader.setTypeface(ironman);
 		mRegisterButton = (Button)findViewById(R.id.register_button);
 		mSignInButton = (Button)findViewById(R.id.signin_button);
 		mUserName = (EditText)findViewById(R.id.username_field);

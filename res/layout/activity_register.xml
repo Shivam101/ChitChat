@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/signin"
     tools:context="${relativePackage}.${activityClass}" >
 
     <TextView
@@ -13,7 +14,7 @@
         android:text="@string/title_activity_register"
         android:textColor="@color/orange_800"
         android:textSize="60sp" />
-    
+
     <EditText
         android:id="@+id/username_field"
         android:layout_width="match_parent"
@@ -23,7 +24,7 @@
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
         android:layout_marginTop="50dp"
-        android:background="@drawable/bg_card"
+        android:background="@color/white"
         android:drawablePadding="6dp"
         android:drawableStart="@drawable/ic_action_person"
         android:hint="@string/enter_username"
@@ -40,7 +41,7 @@
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
         android:layout_marginTop="30dp"
-        android:background="@drawable/bg_card"
+        android:background="@color/white"
         android:drawablePadding="6dp"
         android:drawableStart="@drawable/ic_action_secure"
         android:hint="@string/enter_password"
@@ -48,17 +49,17 @@
         android:padding="10dp"
         android:paddingLeft="30dp"
         android:paddingRight="30dp" />
-    
+
     <Button
         android:id="@+id/register_next"
-        android:background="@color/orange_800"
-        android:text="@string/next"
-        android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="40dp"/>
+        android:background="@color/orange_800"
+        android:text="@string/next"
+        android:textColor="@color/white" />
 
 </RelativeLayout>

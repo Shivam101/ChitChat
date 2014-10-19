@@ -1,6 +1,7 @@
 package com.shivamb7.chitchat;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import android.app.Activity;
@@ -13,6 +14,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationCompat.WearableExtender;
+import android.support.v4.app.NotificationCompat.BigTextStyle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,6 +23,8 @@ import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -40,8 +45,10 @@ import com.shivamb7.chitchat.workers.FileHelper;
 
 public class RecipientsActivity extends Activity {
 
-	ListView mRecipientList;
+	GridView mRecipientsGrid;
+	ListView mRecipientsList;
 	TextView mEmptyText;
+	EditText mSearch;
 	ImageView mEmptyImage;
 	List<ParseUser> pfriends;
 	ParseUser currentUser;
@@ -60,6 +67,8 @@ public class RecipientsActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_recipients);
 		getActionBar().setHomeButtonEnabled(true);
+		//mSearch = (EditText)findViewById(R.id.etsearch);
+		//mSearch.setVisibility(View.GONE);
 		Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);;
 		Intent resultIntent = new Intent(this, ChatsActivity.class);
 		PendingIntent resultPendingIntent =
@@ -69,31 +78,68 @@ public class RecipientsActivity extends Activity {
 			    resultIntent,
 			    PendingIntent.FLAG_UPDATE_CURRENT
 			);
+		Calendar cal = Calendar.getInstance();              
+		Intent intent = new Intent(Intent.ACTION_EDIT);
+		intent.setType("vnd.android.cursor.item/event");
+		intent.putExtra("beginTime", cal.getTimeInMillis()+60*60*1000);
+		intent.putExtra("allDay", false);
+		intent.putExtra("rrule", "FREQ=DAILY");
+		intent.putExtra("endTime", cal.getTimeInMillis()+2*60*60*1000);
+		intent.putExtra("title", "Remember to check your inbox !");
+		//startActivity(intent);
+		PendingIntent actionPendingIntent =
+		        PendingIntent.getActivity(this, 0, intent,
+		                PendingIntent.FLAG_UPDATE_CURRENT);
+		NotificationCompat.Action action =
+		        new NotificationCompat.Action.Builder(R.drawable.notifications,
+		                getString(R.string.remind_me), actionPendingIntent)
+		                .build();
+		BigTextStyle bigStyle = new NotificationCompat.BigTextStyle();
+		bigStyle.bigText("New chit !");
 		mNotifBuilder = new NotificationCompat.Builder(
 				this).setSmallIcon(R.drawable.ic_stat_ic_action_send_now)
-				.setContentTitle("ChitChat").setContentText("Your message has been sent !").setSound(soundUri).setAutoCancel(true);;
+				.setContentTitle("ChitChat").setContentText("Your message has been sent !").extend(new WearableExtender().addAction(action)).setSound(soundUri).setStyle(bigStyle).setAutoCancel(true);;
 		mNotifBuilder.setContentIntent(resultPendingIntent);
 		mNotifyMgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-		
-		mRecipientList = (ListView) findViewById(R.id.recipient_list);
+		mRecipientsList = (ListView)findViewById(R.id.recipient_list);
+		mRecipientsList.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+		//mRecipientsGrid = (GridView) findViewById(R.id.friends_grid);
 		mEmptyText = (TextView) findViewById(R.id.empty_state_text);
 		mEmptyImage = (ImageView) findViewById(R.id.empty_state_image);
-		mRecipientList.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+		//mRecipientsGrid.setChoiceMode(GridView.CHOICE_MODE_MULTIPLE);
 		mMediaUri = getIntent().getData();
 		mFileType = getIntent().getExtras().getString(Constants.FILE_TYPE);
-		mRecipientList.setOnItemClickListener(new OnItemClickListener() {
+		/*mRecipientsGrid.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				// TODO Auto-generated method stub
-				if (mRecipientList.getCheckedItemCount() > 0) {
+				ImageView mCheckImage = (ImageView)findViewById(R.id.user_image_check); 
+				if (mRecipientsGrid.getCheckedItemCount() > 0) {
+					mSend.setVisible(true);
+					mCheckImage.setVisibility(View.VISIBLE);
+					
+				} else {
+					mSend.setVisible(false);
+					mCheckImage.setVisibility(View.INVISIBLE);
+				}
+			}
+		});*/
+		mRecipientsList.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				// TODO Auto-generated method stub
+				if (mRecipientsList.getCheckedItemCount() > 0) {
 					mSend.setVisible(true);
 				} else {
 					mSend.setVisible(false);
 				}
 			}
 		});
+
 	}
 	
 	
@@ -131,6 +177,19 @@ public class RecipientsActivity extends Activity {
 
 	}
 	
+	public void setReminder()
+	{
+		Calendar cal = Calendar.getInstance();              
+		Intent intent = new Intent(Intent.ACTION_EDIT);
+		intent.setType("vnd.android.cursor.item/event");
+		intent.putExtra("beginTime", cal.getTimeInMillis());
+		intent.putExtra("allDay", false);
+		intent.putExtra("rrule", "FREQ=DAILY");
+		intent.putExtra("endTime", cal.getTimeInMillis()+60*60*1000);
+		intent.putExtra("title", "Look up Chit");
+		startActivity(intent);
+	}
+	
 	public void sendPushNotifications()
 	{
 		ParseQuery<ParseInstallation> pushQuery = ParseInstallation.getQuery();
@@ -141,21 +200,11 @@ public class RecipientsActivity extends Activity {
 		push.sendInBackground();
 	}
 
-	/*
-	 * public ParseObject createTextMessage() { ParseObject message = new
-	 * ParseObject(Constants.CLASS_TEXT_MESSAGES);
-	 * message.put(Constants.SENDER_NAME, currentUser.getUsername());
-	 * message.put(Constants.SENDER_ID, currentUser.getObjectId());
-	 * message.put(Constants.RECIPIENT_IDS,getRecipientIds());
-	 * message.put(Constants.FILE_TYPE,Constants.TEXT_TYPE);
-	 * message.put(Constants.TEXT_CONTENTS, ComposeTextActivity.msg); return
-	 * message; }
-	 */
-
+	
 	public ArrayList<String> getRecipientIds() {
 		ArrayList<String> recipientIds = new ArrayList<String>();
-		for (int i = 0; i < mRecipientList.getCount(); i++) {
-			if (mRecipientList.isItemChecked(i)) {
+		for (int i = 0; i < mRecipientsList.getCount(); i++) {
+			if (mRecipientsList.isItemChecked(i)) {
 				recipientIds.add(pfriends.get(i).getObjectId());
 			}
 		}
@@ -276,17 +325,27 @@ public class RecipientsActivity extends Activity {
 							if (usernames.length == 0) {
 								mEmptyImage.setVisibility(View.VISIBLE);
 								mEmptyText.setVisibility(View.VISIBLE);
-								mRecipientList.setVisibility(View.GONE);
+								mRecipientsList.setVisibility(View.GONE);
 							} else {
 								mEmptyImage.setVisibility(View.GONE);
 								mEmptyText.setVisibility(View.GONE);
-								mRecipientList.setVisibility(View.VISIBLE);
+								mRecipientsList.setVisibility(View.VISIBLE);
+								/*if(mRecipientsGrid.getAdapter() == null)
+								{
+								FriendGridAdapter mAdapter = new FriendGridAdapter(RecipientsActivity.this, pfriends);
+								mRecipientsGrid.setAdapter(mAdapter);
+								}
+								else
+								{
+									((FriendGridAdapter)(mRecipientsGrid.getAdapter())).refreshAdapter(pfriends);
+								}*/
 								ArrayAdapter<String> mAdapter = new ArrayAdapter<>(
 										RecipientsActivity.this,
 										android.R.layout.simple_list_item_checked,
 										usernames);
-								mRecipientList.setAdapter(mAdapter);
-							}
+								mRecipientsList.setAdapter(mAdapter);
+
+								}
 						} else {
 
 							AlertDialog.Builder builder = new AlertDialog.Builder(
