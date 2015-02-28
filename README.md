@@ -13,7 +13,7 @@ This app uses the following 3rd party libraries :
 
 [Picasso] (https://github.com/square/picasso)
 
-Android Wear Indications :
+Android Wear Integration :
 
 1. Mirror notifications by default on Wearable device.
 2. Set reminders to check Message Inbox at a later date.
